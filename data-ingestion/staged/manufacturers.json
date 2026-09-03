@@ -1,0 +1,1852 @@
+[
+  {
+    "manufacturer_id": "EST-0001",
+    "fei_number": "3000010000",
+    "duns_number": "100000000",
+    "name": "Hahnemann Laboratories, INC.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "100 Pharmaceutical Blvd",
+    "city": "Cambridge",
+    "state": "MA",
+    "country": "USA",
+    "latitude": 42.3736,
+    "longitude": -71.1097,
+    "gmp_compliance_status": "WARNING_LETTER",
+    "registered_product_count": 4403
+  },
+  {
+    "manufacturer_id": "EST-0002",
+    "fei_number": "3000010001",
+    "duns_number": "100000001",
+    "name": "Bryant Ranch Prepack",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "105 Pharmaceutical Blvd",
+    "city": "South San Francisco",
+    "state": "CA",
+    "country": "USA",
+    "latitude": 37.6547,
+    "longitude": -122.4077,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 4335
+  },
+  {
+    "manufacturer_id": "EST-0003",
+    "fei_number": "3000010002",
+    "duns_number": "100000002",
+    "name": "A-S Medication Solutions",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "110 Pharmaceutical Blvd",
+    "city": "Philadelphia",
+    "state": "PA",
+    "country": "USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 2734
+  },
+  {
+    "manufacturer_id": "EST-0004",
+    "fei_number": "3000010003",
+    "duns_number": "100000003",
+    "name": "Boiron",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "115 Pharmaceutical Blvd",
+    "city": "Raleigh-Durham",
+    "state": "NC",
+    "country": "USA",
+    "latitude": 35.7796,
+    "longitude": -78.6382,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 2033
+  },
+  {
+    "manufacturer_id": "EST-0005",
+    "fei_number": "3000010004",
+    "duns_number": "100000004",
+    "name": "Aurobindo Pharma Limited",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "120 Pharmaceutical Blvd",
+    "city": "Basel",
+    "state": "BS",
+    "country": "CHE",
+    "latitude": 47.5596,
+    "longitude": 7.5886,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 1916
+  },
+  {
+    "manufacturer_id": "EST-0006",
+    "fei_number": "3000010005",
+    "duns_number": "100000005",
+    "name": "Proficient Rx LP",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "125 Pharmaceutical Blvd",
+    "city": "Dublin",
+    "state": "L",
+    "country": "IRL",
+    "latitude": 53.3498,
+    "longitude": -6.2603,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 1721
+  },
+  {
+    "manufacturer_id": "EST-0007",
+    "fei_number": "3000010006",
+    "duns_number": "100000006",
+    "name": "REMEDYREPACK INC.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "130 Pharmaceutical Blvd",
+    "city": "Hyderabad",
+    "state": "TG",
+    "country": "IND",
+    "latitude": 17.385,
+    "longitude": 78.4867,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 1492
+  },
+  {
+    "manufacturer_id": "EST-0008",
+    "fei_number": "3000010007",
+    "duns_number": "100000007",
+    "name": "Greer Laboratories, Inc.",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "135 Pharmaceutical Blvd",
+    "city": "Singapore",
+    "state": "SG",
+    "country": "SGP",
+    "latitude": 1.3521,
+    "longitude": 103.8198,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 1328
+  },
+  {
+    "manufacturer_id": "EST-0009",
+    "fei_number": "3000010008",
+    "duns_number": "100000008",
+    "name": "NuCare Pharmaceuticals,Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "140 Pharmaceutical Blvd",
+    "city": "Indianapolis",
+    "state": "IN",
+    "country": "USA",
+    "latitude": 39.7684,
+    "longitude": -86.1581,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 1004
+  },
+  {
+    "manufacturer_id": "EST-0010",
+    "fei_number": "3000010009",
+    "duns_number": "100000009",
+    "name": "PD-Rx Pharmaceuticals, Inc.",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "145 Pharmaceutical Blvd",
+    "city": "Bridgewater",
+    "state": "NJ",
+    "country": "USA",
+    "latitude": 40.5937,
+    "longitude": -74.6049,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 827
+  },
+  {
+    "manufacturer_id": "EST-0011",
+    "fei_number": "3000010010",
+    "duns_number": "100000010",
+    "name": "Preferred Pharmaceuticals Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "150 Pharmaceutical Blvd",
+    "city": "Frankfurt",
+    "state": "HE",
+    "country": "DEU",
+    "latitude": 50.1109,
+    "longitude": 8.6821,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 813
+  },
+  {
+    "manufacturer_id": "EST-0012",
+    "fei_number": "3000010011",
+    "duns_number": "100000011",
+    "name": "The Procter & Gamble Manufacturing Company",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "155 Pharmaceutical Blvd",
+    "city": "Kalamazoo",
+    "state": "MI",
+    "country": "USA",
+    "latitude": 42.2917,
+    "longitude": -85.5872,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 795
+  },
+  {
+    "manufacturer_id": "EST-0013",
+    "fei_number": "3000010012",
+    "duns_number": "100000012",
+    "name": "Aphena Pharma Solutions - Tennessee, LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "160 Pharmaceutical Blvd",
+    "city": "Cambridge",
+    "state": "MA",
+    "country": "USA",
+    "latitude": 42.3736,
+    "longitude": -71.1097,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 789
+  },
+  {
+    "manufacturer_id": "EST-0014",
+    "fei_number": "3000010013",
+    "duns_number": "100000013",
+    "name": "Zydus Lifesciences Limited",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "165 Pharmaceutical Blvd",
+    "city": "South San Francisco",
+    "state": "CA",
+    "country": "USA",
+    "latitude": 37.6547,
+    "longitude": -122.4077,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 717
+  },
+  {
+    "manufacturer_id": "EST-0015",
+    "fei_number": "3000010014",
+    "duns_number": "100000014",
+    "name": "Hikma Pharmaceuticals USA Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "170 Pharmaceutical Blvd",
+    "city": "Philadelphia",
+    "state": "PA",
+    "country": "USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 710
+  },
+  {
+    "manufacturer_id": "EST-0016",
+    "fei_number": "3000010015",
+    "duns_number": "100000015",
+    "name": "Sun Pharmaceutical Industries, Inc.",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "175 Pharmaceutical Blvd",
+    "city": "Raleigh-Durham",
+    "state": "NC",
+    "country": "USA",
+    "latitude": 35.7796,
+    "longitude": -78.6382,
+    "gmp_compliance_status": "WARNING_LETTER",
+    "registered_product_count": 707
+  },
+  {
+    "manufacturer_id": "EST-0017",
+    "fei_number": "3000010016",
+    "duns_number": "100000016",
+    "name": "Fresenius Kabi USA, LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "180 Pharmaceutical Blvd",
+    "city": "Basel",
+    "state": "BS",
+    "country": "CHE",
+    "latitude": 47.5596,
+    "longitude": 7.5886,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 693
+  },
+  {
+    "manufacturer_id": "EST-0018",
+    "fei_number": "3000010017",
+    "duns_number": "100000017",
+    "name": "American Health Packaging",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "185 Pharmaceutical Blvd",
+    "city": "Dublin",
+    "state": "L",
+    "country": "IRL",
+    "latitude": 53.3498,
+    "longitude": -6.2603,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 664
+  },
+  {
+    "manufacturer_id": "EST-0019",
+    "fei_number": "3000010018",
+    "duns_number": "100000018",
+    "name": "Asclemed USA, Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "190 Pharmaceutical Blvd",
+    "city": "Hyderabad",
+    "state": "TG",
+    "country": "IND",
+    "latitude": 17.385,
+    "longitude": 78.4867,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 657
+  },
+  {
+    "manufacturer_id": "EST-0020",
+    "fei_number": "3000010019",
+    "duns_number": "100000019",
+    "name": "Golden State Medical Supply, Inc.",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "195 Pharmaceutical Blvd",
+    "city": "Singapore",
+    "state": "SG",
+    "country": "SGP",
+    "latitude": 1.3521,
+    "longitude": 103.8198,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 645
+  },
+  {
+    "manufacturer_id": "EST-0021",
+    "fei_number": "3000010020",
+    "duns_number": "100000020",
+    "name": "Camber Pharmaceuticals, Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "200 Pharmaceutical Blvd",
+    "city": "Indianapolis",
+    "state": "IN",
+    "country": "USA",
+    "latitude": 39.7684,
+    "longitude": -86.1581,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 606
+  },
+  {
+    "manufacturer_id": "EST-0022",
+    "fei_number": "3000010021",
+    "duns_number": "100000021",
+    "name": "Professional Complementary Health Formulas",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "205 Pharmaceutical Blvd",
+    "city": "Bridgewater",
+    "state": "NJ",
+    "country": "USA",
+    "latitude": 40.5937,
+    "longitude": -74.6049,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 605
+  },
+  {
+    "manufacturer_id": "EST-0023",
+    "fei_number": "3000010022",
+    "duns_number": "100000022",
+    "name": "Deseret Biologicals, Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "210 Pharmaceutical Blvd",
+    "city": "Frankfurt",
+    "state": "HE",
+    "country": "DEU",
+    "latitude": 50.1109,
+    "longitude": 8.6821,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 588
+  },
+  {
+    "manufacturer_id": "EST-0024",
+    "fei_number": "3000010023",
+    "duns_number": "100000023",
+    "name": "Major Pharmaceuticals",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "215 Pharmaceutical Blvd",
+    "city": "Kalamazoo",
+    "state": "MI",
+    "country": "USA",
+    "latitude": 42.2917,
+    "longitude": -85.5872,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 583
+  },
+  {
+    "manufacturer_id": "EST-0025",
+    "fei_number": "3000010024",
+    "duns_number": "100000024",
+    "name": "Northwind Health Company, LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "220 Pharmaceutical Blvd",
+    "city": "Cambridge",
+    "state": "MA",
+    "country": "USA",
+    "latitude": 42.3736,
+    "longitude": -71.1097,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 576
+  },
+  {
+    "manufacturer_id": "EST-0026",
+    "fei_number": "3000010025",
+    "duns_number": "100000025",
+    "name": "Kenvue Brands LLC",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "225 Pharmaceutical Blvd",
+    "city": "South San Francisco",
+    "state": "CA",
+    "country": "USA",
+    "latitude": 37.6547,
+    "longitude": -122.4077,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 560
+  },
+  {
+    "manufacturer_id": "EST-0027",
+    "fei_number": "3000010026",
+    "duns_number": "100000026",
+    "name": "Hahnemann Laboratories, Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "230 Pharmaceutical Blvd",
+    "city": "Philadelphia",
+    "state": "PA",
+    "country": "USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 557
+  },
+  {
+    "manufacturer_id": "EST-0028",
+    "fei_number": "3000010027",
+    "duns_number": "100000027",
+    "name": "Teva Pharmaceuticals USA, Inc.",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "235 Pharmaceutical Blvd",
+    "city": "Raleigh-Durham",
+    "state": "NC",
+    "country": "USA",
+    "latitude": 35.7796,
+    "longitude": -78.6382,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 533
+  },
+  {
+    "manufacturer_id": "EST-0029",
+    "fei_number": "3000010028",
+    "duns_number": "100000028",
+    "name": "Chartwell RX, LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "240 Pharmaceutical Blvd",
+    "city": "Basel",
+    "state": "BS",
+    "country": "CHE",
+    "latitude": 47.5596,
+    "longitude": 7.5886,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 520
+  },
+  {
+    "manufacturer_id": "EST-0030",
+    "fei_number": "3000010029",
+    "duns_number": "100000029",
+    "name": "Rising Pharma Holdings, Inc.",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "245 Pharmaceutical Blvd",
+    "city": "Dublin",
+    "state": "L",
+    "country": "IRL",
+    "latitude": 53.3498,
+    "longitude": -6.2603,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 517
+  },
+  {
+    "manufacturer_id": "EST-0031",
+    "fei_number": "3000010030",
+    "duns_number": "100000030",
+    "name": "Alembic Pharmaceuticals Limited",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "250 Pharmaceutical Blvd",
+    "city": "Hyderabad",
+    "state": "TG",
+    "country": "IND",
+    "latitude": 17.385,
+    "longitude": 78.4867,
+    "gmp_compliance_status": "WARNING_LETTER",
+    "registered_product_count": 502
+  },
+  {
+    "manufacturer_id": "EST-0032",
+    "fei_number": "3000010031",
+    "duns_number": "100000031",
+    "name": "Bestmade Natural Products",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "255 Pharmaceutical Blvd",
+    "city": "Singapore",
+    "state": "SG",
+    "country": "SGP",
+    "latitude": 1.3521,
+    "longitude": 103.8198,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 498
+  },
+  {
+    "manufacturer_id": "EST-0033",
+    "fei_number": "3000010032",
+    "duns_number": "100000032",
+    "name": "Alembic Pharmaceuticals Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "260 Pharmaceutical Blvd",
+    "city": "Indianapolis",
+    "state": "IN",
+    "country": "USA",
+    "latitude": 39.7684,
+    "longitude": -86.1581,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 491
+  },
+  {
+    "manufacturer_id": "EST-0034",
+    "fei_number": "3000010033",
+    "duns_number": "100000033",
+    "name": "Mylan Pharmaceuticals Inc.",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "265 Pharmaceutical Blvd",
+    "city": "Bridgewater",
+    "state": "NJ",
+    "country": "USA",
+    "latitude": 40.5937,
+    "longitude": -74.6049,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 464
+  },
+  {
+    "manufacturer_id": "EST-0035",
+    "fei_number": "3000010034",
+    "duns_number": "100000034",
+    "name": "Amneal Pharmaceuticals LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "270 Pharmaceutical Blvd",
+    "city": "Frankfurt",
+    "state": "HE",
+    "country": "DEU",
+    "latitude": 50.1109,
+    "longitude": 8.6821,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 463
+  },
+  {
+    "manufacturer_id": "EST-0036",
+    "fei_number": "3000010035",
+    "duns_number": "100000035",
+    "name": "Coupler LLC",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "275 Pharmaceutical Blvd",
+    "city": "Kalamazoo",
+    "state": "MI",
+    "country": "USA",
+    "latitude": 42.2917,
+    "longitude": -85.5872,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 463
+  },
+  {
+    "manufacturer_id": "EST-0037",
+    "fei_number": "3000010036",
+    "duns_number": "100000036",
+    "name": "Cardinal Health 107, LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "280 Pharmaceutical Blvd",
+    "city": "Cambridge",
+    "state": "MA",
+    "country": "USA",
+    "latitude": 42.3736,
+    "longitude": -71.1097,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 458
+  },
+  {
+    "manufacturer_id": "EST-0038",
+    "fei_number": "3000010037",
+    "duns_number": "100000037",
+    "name": "Zydus Pharmaceuticals USA Inc.",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "285 Pharmaceutical Blvd",
+    "city": "South San Francisco",
+    "state": "CA",
+    "country": "USA",
+    "latitude": 37.6547,
+    "longitude": -122.4077,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 448
+  },
+  {
+    "manufacturer_id": "EST-0039",
+    "fei_number": "3000010038",
+    "duns_number": "100000038",
+    "name": "ALK-Abello, Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "290 Pharmaceutical Blvd",
+    "city": "Philadelphia",
+    "state": "PA",
+    "country": "USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 442
+  },
+  {
+    "manufacturer_id": "EST-0040",
+    "fei_number": "3000010039",
+    "duns_number": "100000039",
+    "name": "CVS Pharmacy",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "295 Pharmaceutical Blvd",
+    "city": "Raleigh-Durham",
+    "state": "NC",
+    "country": "USA",
+    "latitude": 35.7796,
+    "longitude": -78.6382,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 440
+  },
+  {
+    "manufacturer_id": "EST-0041",
+    "fei_number": "3000010040",
+    "duns_number": "100000040",
+    "name": "Actavis Pharma, Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "300 Pharmaceutical Blvd",
+    "city": "Basel",
+    "state": "BS",
+    "country": "CHE",
+    "latitude": 47.5596,
+    "longitude": 7.5886,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 409
+  },
+  {
+    "manufacturer_id": "EST-0042",
+    "fei_number": "3000010041",
+    "duns_number": "100000041",
+    "name": "Haleon US Holdings LLC",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "305 Pharmaceutical Blvd",
+    "city": "Dublin",
+    "state": "L",
+    "country": "IRL",
+    "latitude": 53.3498,
+    "longitude": -6.2603,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 404
+  },
+  {
+    "manufacturer_id": "EST-0043",
+    "fei_number": "3000010042",
+    "duns_number": "100000042",
+    "name": "Lupin Pharmaceuticals, Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "310 Pharmaceutical Blvd",
+    "city": "Hyderabad",
+    "state": "TG",
+    "country": "IND",
+    "latitude": 17.385,
+    "longitude": 78.4867,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 403
+  },
+  {
+    "manufacturer_id": "EST-0044",
+    "fei_number": "3000010043",
+    "duns_number": "100000043",
+    "name": "Bath & Body Works, Inc.",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "315 Pharmaceutical Blvd",
+    "city": "Singapore",
+    "state": "SG",
+    "country": "SGP",
+    "latitude": 1.3521,
+    "longitude": 103.8198,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 402
+  },
+  {
+    "manufacturer_id": "EST-0045",
+    "fei_number": "3000010044",
+    "duns_number": "100000044",
+    "name": "Macleods Pharmaceuticals Limited",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "320 Pharmaceutical Blvd",
+    "city": "Indianapolis",
+    "state": "IN",
+    "country": "USA",
+    "latitude": 39.7684,
+    "longitude": -86.1581,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 382
+  },
+  {
+    "manufacturer_id": "EST-0046",
+    "fei_number": "3000010045",
+    "duns_number": "100000045",
+    "name": "Sandoz Inc",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "325 Pharmaceutical Blvd",
+    "city": "Bridgewater",
+    "state": "NJ",
+    "country": "USA",
+    "latitude": 40.5937,
+    "longitude": -74.6049,
+    "gmp_compliance_status": "WARNING_LETTER",
+    "registered_product_count": 374
+  },
+  {
+    "manufacturer_id": "EST-0047",
+    "fei_number": "3000010046",
+    "duns_number": "100000046",
+    "name": "Jubilant HollisterStier LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "330 Pharmaceutical Blvd",
+    "city": "Frankfurt",
+    "state": "HE",
+    "country": "DEU",
+    "latitude": 50.1109,
+    "longitude": 8.6821,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 372
+  },
+  {
+    "manufacturer_id": "EST-0048",
+    "fei_number": "3000010047",
+    "duns_number": "100000047",
+    "name": "AvKARE",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "335 Pharmaceutical Blvd",
+    "city": "Kalamazoo",
+    "state": "MI",
+    "country": "USA",
+    "latitude": 42.2917,
+    "longitude": -85.5872,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 365
+  },
+  {
+    "manufacturer_id": "EST-0049",
+    "fei_number": "3000010048",
+    "duns_number": "100000048",
+    "name": "Conopco Inc. d/b/a/ Unilever",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "340 Pharmaceutical Blvd",
+    "city": "Cambridge",
+    "state": "MA",
+    "country": "USA",
+    "latitude": 42.3736,
+    "longitude": -71.1097,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 360
+  },
+  {
+    "manufacturer_id": "EST-0050",
+    "fei_number": "3000010049",
+    "duns_number": "100000049",
+    "name": "NuCare Pharmaceuticals, Inc.",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "345 Pharmaceutical Blvd",
+    "city": "South San Francisco",
+    "state": "CA",
+    "country": "USA",
+    "latitude": 37.6547,
+    "longitude": -122.4077,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 360
+  },
+  {
+    "manufacturer_id": "EST-0051",
+    "fei_number": "3000010050",
+    "duns_number": "100000050",
+    "name": "Amneal Pharmaceuticals NY LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "350 Pharmaceutical Blvd",
+    "city": "Philadelphia",
+    "state": "PA",
+    "country": "USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 354
+  },
+  {
+    "manufacturer_id": "EST-0052",
+    "fei_number": "3000010051",
+    "duns_number": "100000051",
+    "name": "Ascend Laboratories, LLC",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "355 Pharmaceutical Blvd",
+    "city": "Raleigh-Durham",
+    "state": "NC",
+    "country": "USA",
+    "latitude": 35.7796,
+    "longitude": -78.6382,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 350
+  },
+  {
+    "manufacturer_id": "EST-0053",
+    "fei_number": "3000010052",
+    "duns_number": "100000052",
+    "name": "Walgreen Company",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "360 Pharmaceutical Blvd",
+    "city": "Basel",
+    "state": "BS",
+    "country": "CHE",
+    "latitude": 47.5596,
+    "longitude": 7.5886,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 345
+  },
+  {
+    "manufacturer_id": "EST-0054",
+    "fei_number": "3000010053",
+    "duns_number": "100000053",
+    "name": "BluePoint Laboratories",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "365 Pharmaceutical Blvd",
+    "city": "Dublin",
+    "state": "L",
+    "country": "IRL",
+    "latitude": 53.3498,
+    "longitude": -6.2603,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 343
+  },
+  {
+    "manufacturer_id": "EST-0055",
+    "fei_number": "3000010054",
+    "duns_number": "100000054",
+    "name": "Energique, Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "370 Pharmaceutical Blvd",
+    "city": "Hyderabad",
+    "state": "TG",
+    "country": "IND",
+    "latitude": 17.385,
+    "longitude": 78.4867,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 343
+  },
+  {
+    "manufacturer_id": "EST-0056",
+    "fei_number": "3000010055",
+    "duns_number": "100000055",
+    "name": "AvPAK",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "375 Pharmaceutical Blvd",
+    "city": "Singapore",
+    "state": "SG",
+    "country": "SGP",
+    "latitude": 1.3521,
+    "longitude": 103.8198,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 337
+  },
+  {
+    "manufacturer_id": "EST-0057",
+    "fei_number": "3000010056",
+    "duns_number": "100000056",
+    "name": "Hospira, Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "380 Pharmaceutical Blvd",
+    "city": "Indianapolis",
+    "state": "IN",
+    "country": "USA",
+    "latitude": 39.7684,
+    "longitude": -86.1581,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 337
+  },
+  {
+    "manufacturer_id": "EST-0058",
+    "fei_number": "3000010057",
+    "duns_number": "100000057",
+    "name": "HF Acquisition Co LLC, DBA HealthFirst",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "385 Pharmaceutical Blvd",
+    "city": "Bridgewater",
+    "state": "NJ",
+    "country": "USA",
+    "latitude": 40.5937,
+    "longitude": -74.6049,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 326
+  },
+  {
+    "manufacturer_id": "EST-0059",
+    "fei_number": "3000010058",
+    "duns_number": "100000058",
+    "name": "Topco Associates LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "390 Pharmaceutical Blvd",
+    "city": "Frankfurt",
+    "state": "HE",
+    "country": "DEU",
+    "latitude": 50.1109,
+    "longitude": 8.6821,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 317
+  },
+  {
+    "manufacturer_id": "EST-0060",
+    "fei_number": "3000010059",
+    "duns_number": "100000059",
+    "name": "Direct_Rx",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "395 Pharmaceutical Blvd",
+    "city": "Kalamazoo",
+    "state": "MI",
+    "country": "USA",
+    "latitude": 42.2917,
+    "longitude": -85.5872,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 316
+  },
+  {
+    "manufacturer_id": "EST-0061",
+    "fei_number": "3000010060",
+    "duns_number": "100000060",
+    "name": "DNA Labs, Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "400 Pharmaceutical Blvd",
+    "city": "Cambridge",
+    "state": "MA",
+    "country": "USA",
+    "latitude": 42.3736,
+    "longitude": -71.1097,
+    "gmp_compliance_status": "WARNING_LETTER",
+    "registered_product_count": 315
+  },
+  {
+    "manufacturer_id": "EST-0062",
+    "fei_number": "3000010061",
+    "duns_number": "100000061",
+    "name": "BioActive Nutritional, Inc.",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "405 Pharmaceutical Blvd",
+    "city": "South San Francisco",
+    "state": "CA",
+    "country": "USA",
+    "latitude": 37.6547,
+    "longitude": -122.4077,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 311
+  },
+  {
+    "manufacturer_id": "EST-0063",
+    "fei_number": "3000010062",
+    "duns_number": "100000062",
+    "name": "NCS HealthCare of KY, LLC dba Vangard Labs",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "410 Pharmaceutical Blvd",
+    "city": "Philadelphia",
+    "state": "PA",
+    "country": "USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 311
+  },
+  {
+    "manufacturer_id": "EST-0064",
+    "fei_number": "3000010063",
+    "duns_number": "100000063",
+    "name": "Amazon.com Services LLC",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "415 Pharmaceutical Blvd",
+    "city": "Raleigh-Durham",
+    "state": "NC",
+    "country": "USA",
+    "latitude": 35.7796,
+    "longitude": -78.6382,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 301
+  },
+  {
+    "manufacturer_id": "EST-0065",
+    "fei_number": "3000010064",
+    "duns_number": "100000064",
+    "name": "ANI Pharmaceuticals, Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "420 Pharmaceutical Blvd",
+    "city": "Basel",
+    "state": "BS",
+    "country": "CHE",
+    "latitude": 47.5596,
+    "longitude": 7.5886,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 299
+  },
+  {
+    "manufacturer_id": "EST-0066",
+    "fei_number": "3000010065",
+    "duns_number": "100000065",
+    "name": "Apotex Corp.",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "425 Pharmaceutical Blvd",
+    "city": "Dublin",
+    "state": "L",
+    "country": "IRL",
+    "latitude": 53.3498,
+    "longitude": -6.2603,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 295
+  },
+  {
+    "manufacturer_id": "EST-0067",
+    "fei_number": "3000010066",
+    "duns_number": "100000066",
+    "name": "NorthStar RxLLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "430 Pharmaceutical Blvd",
+    "city": "Hyderabad",
+    "state": "TG",
+    "country": "IND",
+    "latitude": 17.385,
+    "longitude": 78.4867,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 287
+  },
+  {
+    "manufacturer_id": "EST-0068",
+    "fei_number": "3000010067",
+    "duns_number": "100000067",
+    "name": "Glenmark Pharmaceuticals Inc., USA",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "435 Pharmaceutical Blvd",
+    "city": "Singapore",
+    "state": "SG",
+    "country": "SGP",
+    "latitude": 1.3521,
+    "longitude": 103.8198,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 280
+  },
+  {
+    "manufacturer_id": "EST-0069",
+    "fei_number": "3000010068",
+    "duns_number": "100000068",
+    "name": "Baxter Healthcare Corporation",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "440 Pharmaceutical Blvd",
+    "city": "Indianapolis",
+    "state": "IN",
+    "country": "USA",
+    "latitude": 39.7684,
+    "longitude": -86.1581,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 278
+  },
+  {
+    "manufacturer_id": "EST-0070",
+    "fei_number": "3000010069",
+    "duns_number": "100000069",
+    "name": "Advanced Rx of Tennessee, LLC",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "445 Pharmaceutical Blvd",
+    "city": "Bridgewater",
+    "state": "NJ",
+    "country": "USA",
+    "latitude": 40.5937,
+    "longitude": -74.6049,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 277
+  },
+  {
+    "manufacturer_id": "EST-0071",
+    "fei_number": "3000010070",
+    "duns_number": "100000070",
+    "name": "SHISEIDO AMERICAS CORPORATION",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "450 Pharmaceutical Blvd",
+    "city": "Frankfurt",
+    "state": "HE",
+    "country": "DEU",
+    "latitude": 50.1109,
+    "longitude": 8.6821,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 277
+  },
+  {
+    "manufacturer_id": "EST-0072",
+    "fei_number": "3000010071",
+    "duns_number": "100000071",
+    "name": "Walgreens",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "455 Pharmaceutical Blvd",
+    "city": "Kalamazoo",
+    "state": "MI",
+    "country": "USA",
+    "latitude": 42.2917,
+    "longitude": -85.5872,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 274
+  },
+  {
+    "manufacturer_id": "EST-0073",
+    "fei_number": "3000010072",
+    "duns_number": "100000072",
+    "name": "Newton Laboratories, Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "460 Pharmaceutical Blvd",
+    "city": "Cambridge",
+    "state": "MA",
+    "country": "USA",
+    "latitude": 42.3736,
+    "longitude": -71.1097,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 270
+  },
+  {
+    "manufacturer_id": "EST-0074",
+    "fei_number": "3000010073",
+    "duns_number": "100000073",
+    "name": "Eugia US LLC",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "465 Pharmaceutical Blvd",
+    "city": "South San Francisco",
+    "state": "CA",
+    "country": "USA",
+    "latitude": 37.6547,
+    "longitude": -122.4077,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 269
+  },
+  {
+    "manufacturer_id": "EST-0075",
+    "fei_number": "3000010074",
+    "duns_number": "100000074",
+    "name": "Gland Pharma Limited",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "470 Pharmaceutical Blvd",
+    "city": "Philadelphia",
+    "state": "PA",
+    "country": "USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 265
+  },
+  {
+    "manufacturer_id": "EST-0076",
+    "fei_number": "3000010075",
+    "duns_number": "100000075",
+    "name": "Strategic Sourcing Services LLC",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "475 Pharmaceutical Blvd",
+    "city": "Raleigh-Durham",
+    "state": "NC",
+    "country": "USA",
+    "latitude": 35.7796,
+    "longitude": -78.6382,
+    "gmp_compliance_status": "WARNING_LETTER",
+    "registered_product_count": 265
+  },
+  {
+    "manufacturer_id": "EST-0077",
+    "fei_number": "3000010076",
+    "duns_number": "100000076",
+    "name": "Rite Aid Corporation",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "480 Pharmaceutical Blvd",
+    "city": "Basel",
+    "state": "BS",
+    "country": "CHE",
+    "latitude": 47.5596,
+    "longitude": 7.5886,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 260
+  },
+  {
+    "manufacturer_id": "EST-0078",
+    "fei_number": "3000010077",
+    "duns_number": "100000077",
+    "name": "H E B",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "485 Pharmaceutical Blvd",
+    "city": "Dublin",
+    "state": "L",
+    "country": "IRL",
+    "latitude": 53.3498,
+    "longitude": -6.2603,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 257
+  },
+  {
+    "manufacturer_id": "EST-0079",
+    "fei_number": "3000010078",
+    "duns_number": "100000078",
+    "name": "Sportpharm LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "490 Pharmaceutical Blvd",
+    "city": "Hyderabad",
+    "state": "TG",
+    "country": "IND",
+    "latitude": 17.385,
+    "longitude": 78.4867,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 252
+  },
+  {
+    "manufacturer_id": "EST-0080",
+    "fei_number": "3000010079",
+    "duns_number": "100000079",
+    "name": "Advanced Rx Pharmacy of Tennessee, LLC",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "495 Pharmaceutical Blvd",
+    "city": "Singapore",
+    "state": "SG",
+    "country": "SGP",
+    "latitude": 1.3521,
+    "longitude": 103.8198,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 250
+  },
+  {
+    "manufacturer_id": "EST-0081",
+    "fei_number": "3000010080",
+    "duns_number": "100000080",
+    "name": "Catalent Pharma Solutions, LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "500 Pharmaceutical Blvd",
+    "city": "Indianapolis",
+    "state": "IN",
+    "country": "USA",
+    "latitude": 39.7684,
+    "longitude": -86.1581,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 250
+  },
+  {
+    "manufacturer_id": "EST-0082",
+    "fei_number": "3000010081",
+    "duns_number": "100000081",
+    "name": "Professional Compounding Centers of America dba PCCA",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "505 Pharmaceutical Blvd",
+    "city": "Bridgewater",
+    "state": "NJ",
+    "country": "USA",
+    "latitude": 40.5937,
+    "longitude": -74.6049,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 250
+  },
+  {
+    "manufacturer_id": "EST-0083",
+    "fei_number": "3000010082",
+    "duns_number": "100000082",
+    "name": "MSN Laboratories Private Limited",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "510 Pharmaceutical Blvd",
+    "city": "Frankfurt",
+    "state": "HE",
+    "country": "DEU",
+    "latitude": 50.1109,
+    "longitude": 8.6821,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 249
+  },
+  {
+    "manufacturer_id": "EST-0084",
+    "fei_number": "3000010083",
+    "duns_number": "100000083",
+    "name": "Medical Purchasing Solutions, LLC",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "515 Pharmaceutical Blvd",
+    "city": "Kalamazoo",
+    "state": "MI",
+    "country": "USA",
+    "latitude": 42.2917,
+    "longitude": -85.5872,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 249
+  },
+  {
+    "manufacturer_id": "EST-0085",
+    "fei_number": "3000010084",
+    "duns_number": "100000084",
+    "name": "Heritage Pharmaceuticals Inc. d/b/a Avet Pharmaceuticals Inc.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "520 Pharmaceutical Blvd",
+    "city": "Cambridge",
+    "state": "MA",
+    "country": "USA",
+    "latitude": 42.3736,
+    "longitude": -71.1097,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 243
+  },
+  {
+    "manufacturer_id": "EST-0086",
+    "fei_number": "3000010085",
+    "duns_number": "100000085",
+    "name": "Medisca Inc.",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "525 Pharmaceutical Blvd",
+    "city": "South San Francisco",
+    "state": "CA",
+    "country": "USA",
+    "latitude": 37.6547,
+    "longitude": -122.4077,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 243
+  },
+  {
+    "manufacturer_id": "EST-0087",
+    "fei_number": "3000010086",
+    "duns_number": "100000086",
+    "name": "Novadoz Pharmaceuticals LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "530 Pharmaceutical Blvd",
+    "city": "Philadelphia",
+    "state": "PA",
+    "country": "USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 237
+  },
+  {
+    "manufacturer_id": "EST-0088",
+    "fei_number": "3000010087",
+    "duns_number": "100000087",
+    "name": "Redpharm Drug",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "535 Pharmaceutical Blvd",
+    "city": "Raleigh-Durham",
+    "state": "NC",
+    "country": "USA",
+    "latitude": 35.7796,
+    "longitude": -78.6382,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 237
+  },
+  {
+    "manufacturer_id": "EST-0089",
+    "fei_number": "3000010088",
+    "duns_number": "100000088",
+    "name": "SpecGx LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "540 Pharmaceutical Blvd",
+    "city": "Basel",
+    "state": "BS",
+    "country": "CHE",
+    "latitude": 47.5596,
+    "longitude": 7.5886,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 235
+  },
+  {
+    "manufacturer_id": "EST-0090",
+    "fei_number": "3000010089",
+    "duns_number": "100000089",
+    "name": "NorthStar Rx LLC",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "545 Pharmaceutical Blvd",
+    "city": "Dublin",
+    "state": "L",
+    "country": "IRL",
+    "latitude": 53.3498,
+    "longitude": -6.2603,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 230
+  },
+  {
+    "manufacturer_id": "EST-0091",
+    "fei_number": "3000010090",
+    "duns_number": "100000090",
+    "name": "Pfizer Laboratories Div Pfizer Inc",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "550 Pharmaceutical Blvd",
+    "city": "Hyderabad",
+    "state": "TG",
+    "country": "IND",
+    "latitude": 17.385,
+    "longitude": 78.4867,
+    "gmp_compliance_status": "WARNING_LETTER",
+    "registered_product_count": 229
+  },
+  {
+    "manufacturer_id": "EST-0092",
+    "fei_number": "3000010091",
+    "duns_number": "100000091",
+    "name": "Spectrum Laboratory Products, Inc.",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "555 Pharmaceutical Blvd",
+    "city": "Singapore",
+    "state": "SG",
+    "country": "SGP",
+    "latitude": 1.3521,
+    "longitude": 103.8198,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 229
+  },
+  {
+    "manufacturer_id": "EST-0093",
+    "fei_number": "3000010092",
+    "duns_number": "100000092",
+    "name": "Amneal Pharmaceuticals of New York LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "560 Pharmaceutical Blvd",
+    "city": "Indianapolis",
+    "state": "IN",
+    "country": "USA",
+    "latitude": 39.7684,
+    "longitude": -86.1581,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 225
+  },
+  {
+    "manufacturer_id": "EST-0094",
+    "fei_number": "3000010093",
+    "duns_number": "100000093",
+    "name": "L. Perrigo Company",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "565 Pharmaceutical Blvd",
+    "city": "Bridgewater",
+    "state": "NJ",
+    "country": "USA",
+    "latitude": 40.5937,
+    "longitude": -74.6049,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 224
+  },
+  {
+    "manufacturer_id": "EST-0095",
+    "fei_number": "3000010094",
+    "duns_number": "100000094",
+    "name": "LETCO MEDICAL, LLC",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "570 Pharmaceutical Blvd",
+    "city": "Frankfurt",
+    "state": "HE",
+    "country": "DEU",
+    "latitude": 50.1109,
+    "longitude": 8.6821,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 224
+  },
+  {
+    "manufacturer_id": "EST-0096",
+    "fei_number": "3000010095",
+    "duns_number": "100000095",
+    "name": "Parfums Christian Dior",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "575 Pharmaceutical Blvd",
+    "city": "Kalamazoo",
+    "state": "MI",
+    "country": "USA",
+    "latitude": 42.2917,
+    "longitude": -85.5872,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 223
+  },
+  {
+    "manufacturer_id": "EST-0097",
+    "fei_number": "3000010096",
+    "duns_number": "100000096",
+    "name": "Bayer HealthCare LLC.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "580 Pharmaceutical Blvd",
+    "city": "Cambridge",
+    "state": "MA",
+    "country": "USA",
+    "latitude": 42.3736,
+    "longitude": -71.1097,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 222
+  },
+  {
+    "manufacturer_id": "EST-0098",
+    "fei_number": "3000010097",
+    "duns_number": "100000097",
+    "name": "Professional Compounding Centers of America",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "585 Pharmaceutical Blvd",
+    "city": "South San Francisco",
+    "state": "CA",
+    "country": "USA",
+    "latitude": 37.6547,
+    "longitude": -122.4077,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 219
+  },
+  {
+    "manufacturer_id": "EST-0099",
+    "fei_number": "3000010098",
+    "duns_number": "100000098",
+    "name": "Shenzhen Lantern Scicence Co.,Ltd.",
+    "business_operations": [
+      "MANUFACTURE",
+      "PACKAGING",
+      "LABELING"
+    ],
+    "facility_address": "590 Pharmaceutical Blvd",
+    "city": "Philadelphia",
+    "state": "PA",
+    "country": "USA",
+    "latitude": 39.9526,
+    "longitude": -75.1652,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 218
+  },
+  {
+    "manufacturer_id": "EST-0100",
+    "fei_number": "3000010099",
+    "duns_number": "100000099",
+    "name": "Target Corporation",
+    "business_operations": [
+      "API_SYNTHESIS",
+      "QUALITY_CONTROL"
+    ],
+    "facility_address": "595 Pharmaceutical Blvd",
+    "city": "Raleigh-Durham",
+    "state": "NC",
+    "country": "USA",
+    "latitude": 35.7796,
+    "longitude": -78.6382,
+    "gmp_compliance_status": "COMPLIANT",
+    "registered_product_count": 215
+  }
+]
