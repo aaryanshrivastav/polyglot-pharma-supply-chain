@@ -4,6 +4,7 @@
 
 # Python
 docs/
+tests/
 venv/
 .venv/
 env/
