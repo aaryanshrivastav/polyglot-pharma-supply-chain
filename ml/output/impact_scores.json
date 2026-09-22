@@ -1,0 +1,41 @@
+{
+  "failed_node_id": "EST-0001",
+  "target_drug_id": "DRUG-0002-7597",
+  "impact_score": 1789.2,
+  "severity_classification": "CATASTROPHIC_DISRUPTION",
+  "affected_pharmacy_count": 994,
+  "affected_distributor_count": 19,
+  "drug_criticality_factor": 1.5,
+  "drug_criticality_rationale": "Sole-source drug with zero substitutable alternatives",
+  "regional_weight": 1.2,
+  "affected_distributors_sample": [
+    "DIST-0001",
+    "DIST-0002",
+    "DIST-0003",
+    "DIST-0004",
+    "DIST-0005",
+    "DIST-0007",
+    "DIST-0008",
+    "DIST-0009",
+    "DIST-0010",
+    "DIST-0011"
+  ],
+  "affected_pharmacies_sample": [
+    "PHARM-1003098971",
+    "PHARM-1003139577",
+    "PHARM-1003293903",
+    "PHARM-1003415019",
+    "PHARM-1003437732",
+    "PHARM-1003819194",
+    "PHARM-1013282722",
+    "PHARM-1013492735",
+    "PHARM-1013664259",
+    "PHARM-1013674944",
+    "PHARM-1013765890",
+    "PHARM-1013788728",
+    "PHARM-1013788777",
+    "PHARM-1013788827",
+    "PHARM-1023026374"
+  ],
+  "evaluated_at": "2026-09-22T18:53:55.115394+00:00"
+}
