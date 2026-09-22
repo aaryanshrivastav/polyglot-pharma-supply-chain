@@ -23,6 +23,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from backend.db_clients import db_manager
+from backend.baseline.routes import router as baseline_router
 from ml.root_cause_analysis import rank_root_causes, load_upstream_topology_map, load_upstream_anomalies
 from ml.impact_scoring import compute_node_disruption_impact, load_downstream_topology_map
 
@@ -47,6 +48,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount Baseline Single-DB Comparison Router
+app.include_router(baseline_router)
 
 STAGED_DIR = PROJECT_ROOT / "data-ingestion" / "staged"
 OUTPUT_DIR = PROJECT_ROOT / "ml" / "output"
