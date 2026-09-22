@@ -1,0 +1,23 @@
+[
+  {
+    "drug_id": "DRUG-0093-7679",
+    "alert_type": "VOLUME_CONTRACTION",
+    "metric_name": "daily_volume",
+    "observed_value": 50.0,
+    "z_score": -4.171,
+    "severity": "CRITICAL",
+    "message": "Shipment volume contracted by 4.17 standard deviations below historical mean.",
+    "detected_at": "2026-09-22T18:46:58.699685+00:00"
+  },
+  {
+    "drug_id": "DRUG-22840-5305",
+    "alert_type": "TEMPERATURE_EXCURSION",
+    "metric_name": "transit_temperature",
+    "observed_value": 32.0,
+    "allowed_range": "15.0C to 25.0C",
+    "deviation_celsius": 7.0,
+    "severity": "CRITICAL",
+    "message": "Transit temperature 32.0C breached cold-chain tolerance [15.0C, 25.0C].",
+    "detected_at": "2026-09-22T18:46:58.699685+00:00"
+  }
+]

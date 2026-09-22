@@ -1,0 +1,192 @@
+[
+  {
+    "drug_id": "DRUG-0093-7679",
+    "risk_score": 0.0973,
+    "risk_level": "LOW",
+    "horizon_days": 7,
+    "last_recorded_stock": 68.54153125103362,
+    "min_projected_stock": 58.04,
+    "projected_depletion_days": null,
+    "forecast_trajectory": [
+      65.3,
+      64.1,
+      62.9,
+      61.7,
+      60.5,
+      59.3,
+      58.0
+    ],
+    "calculated_at": "2026-09-22T18:46:59.538603+00:00"
+  },
+  {
+    "drug_id": "DRUG-22840-5305",
+    "risk_score": 0.0563,
+    "risk_level": "LOW",
+    "horizon_days": 7,
+    "last_recorded_stock": 109.8777256356118,
+    "min_projected_stock": 105.81,
+    "projected_depletion_days": null,
+    "forecast_trajectory": [
+      105.8,
+      106.1,
+      106.3,
+      106.6,
+      106.8,
+      107.1,
+      107.3
+    ],
+    "calculated_at": "2026-09-22T18:46:59.546593+00:00"
+  },
+  {
+    "drug_id": "DRUG-22840-5746",
+    "risk_score": 0.0567,
+    "risk_level": "LOW",
+    "horizon_days": 7,
+    "last_recorded_stock": 107.56633716556678,
+    "min_projected_stock": 105.34,
+    "projected_depletion_days": null,
+    "forecast_trajectory": [
+      105.3,
+      105.5,
+      105.7,
+      105.9,
+      106.1,
+      106.2,
+      106.4
+    ],
+    "calculated_at": "2026-09-22T18:46:59.552600+00:00"
+  },
+  {
+    "drug_id": "DRUG-22840-9659",
+    "risk_score": 0.0557,
+    "risk_level": "LOW",
+    "horizon_days": 7,
+    "last_recorded_stock": 108.75966516343387,
+    "min_projected_stock": 106.8,
+    "projected_depletion_days": null,
+    "forecast_trajectory": [
+      106.8,
+      107.1,
+      107.4,
+      107.7,
+      107.9,
+      108.2,
+      108.5
+    ],
+    "calculated_at": "2026-09-22T18:46:59.559543+00:00"
+  },
+  {
+    "drug_id": "DRUG-16571-679",
+    "risk_score": 0.0574,
+    "risk_level": "LOW",
+    "horizon_days": 7,
+    "last_recorded_stock": 106.48492336616593,
+    "min_projected_stock": 104.11,
+    "projected_depletion_days": null,
+    "forecast_trajectory": [
+      104.1,
+      104.2,
+      104.4,
+      104.5,
+      104.7,
+      104.8,
+      104.9
+    ],
+    "calculated_at": "2026-09-22T18:46:59.567597+00:00"
+  },
+  {
+    "drug_id": "DRUG-14537-883",
+    "risk_score": 0.0551,
+    "risk_level": "LOW",
+    "horizon_days": 7,
+    "last_recorded_stock": 118.6008458329481,
+    "min_projected_stock": 108.12,
+    "projected_depletion_days": null,
+    "forecast_trajectory": [
+      108.1,
+      108.4,
+      108.7,
+      108.9,
+      109.2,
+      109.5,
+      109.8
+    ],
+    "calculated_at": "2026-09-22T18:46:59.572561+00:00"
+  },
+  {
+    "drug_id": "DRUG-15631-2659",
+    "risk_score": 0.0545,
+    "risk_level": "LOW",
+    "horizon_days": 7,
+    "last_recorded_stock": 124.26365745327361,
+    "min_projected_stock": 108.8,
+    "projected_depletion_days": null,
+    "forecast_trajectory": [
+      108.8,
+      109.2,
+      109.7,
+      110.1,
+      110.5,
+      111.0,
+      111.4
+    ],
+    "calculated_at": "2026-09-22T18:46:59.583038+00:00"
+  },
+  {
+    "drug_id": "DRUG-16714-268",
+    "risk_score": 0.0575,
+    "risk_level": "LOW",
+    "horizon_days": 7,
+    "last_recorded_stock": 109.26216667398111,
+    "min_projected_stock": 104.08,
+    "projected_depletion_days": null,
+    "forecast_trajectory": [
+      104.1,
+      104.2,
+      104.3,
+      104.3,
+      104.4,
+      104.5,
+      104.6
+    ],
+    "calculated_at": "2026-09-22T18:46:59.589321+00:00"
+  },
+  {
+    "drug_id": "DRUG-16714-973",
+    "risk_score": 0.0583,
+    "risk_level": "LOW",
+    "horizon_days": 7,
+    "last_recorded_stock": 105.65370288643045,
+    "min_projected_stock": 102.8,
+    "projected_depletion_days": null,
+    "forecast_trajectory": [
+      102.8,
+      102.9,
+      102.9,
+      103.0,
+      103.1,
+      103.1,
+      103.2
+    ],
+    "calculated_at": "2026-09-22T18:46:59.596318+00:00"
+  },
+  {
+    "drug_id": "DRUG-16729-563",
+    "risk_score": 0.0561,
+    "risk_level": "LOW",
+    "horizon_days": 7,
+    "last_recorded_stock": 108.14814420961807,
+    "min_projected_stock": 106.24,
+    "projected_depletion_days": null,
+    "forecast_trajectory": [
+      106.2,
+      106.5,
+      106.7,
+      106.9,
+      107.1,
+      107.3,
+      107.5
+    ],
+    "calculated_at": "2026-09-22T18:46:59.602301+00:00"
+  }
+]
