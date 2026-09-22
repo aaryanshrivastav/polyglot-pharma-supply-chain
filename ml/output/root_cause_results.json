@@ -1,7 +1,7 @@
 {
   "query_pharmacy_id": "PHARM-1649791633",
   "query_drug_id": "DRUG-0002-7597",
-  "diagnosed_at": "2026-09-22T19:01:53.890058+00:00",
+  "diagnosed_at": "2026-09-22T19:15:47.830593+00:00",
   "top_root_cause": {
     "candidate_id": "EST-0002",
     "node_type": "Manufacturer",
@@ -64,20 +64,20 @@
       "rationale": "Upstream primary drug manufacturing plant with 0.20 production disruption correlation."
     },
     {
-      "candidate_id": "EST-0005",
+      "candidate_id": "EST-0003",
       "node_type": "Manufacturer",
       "hop_distance": 2,
-      "path": "PHARM-1649791633 <- DIST-0001 <- (SUPPLIES) <- EST-0005",
+      "path": "PHARM-1649791633 <- DIST-0001 <- (SUPPLIES) <- EST-0003",
       "proximity_score": 0.65,
       "anomaly_correlation": 0.2,
       "root_cause_probability": 0.38,
       "rationale": "Upstream primary drug manufacturing plant with 0.20 production disruption correlation."
     },
     {
-      "candidate_id": "EST-0003",
+      "candidate_id": "EST-0005",
       "node_type": "Manufacturer",
       "hop_distance": 2,
-      "path": "PHARM-1649791633 <- DIST-0001 <- (SUPPLIES) <- EST-0003",
+      "path": "PHARM-1649791633 <- DIST-0001 <- (SUPPLIES) <- EST-0005",
       "proximity_score": 0.65,
       "anomaly_correlation": 0.2,
       "root_cause_probability": 0.38,
