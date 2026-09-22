@@ -17,6 +17,7 @@ build/
 .pytest_cache/
 .coverage
 htmlcov/
+pytest.ini
 
 # Node.js
 node_modules/
