@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"outline":"#76777d","tertiary-fixed-dim":"#b9c7df","tertiary-container":"#0d1c2e","inverse-primary":"#bec6e0","secondary":"#0051d5","on-surface-variant":"#45464d","surface-container-highest":"#e0e3e5","on-secondary":"#ffffff","surface-dim":"#d8dadc","error":"#ba1a1a","tertiary-fixed":"#d5e3fc","on-tertiary":"#ffffff","on-secondary-fixed":"#00174b","on-secondary-fixed-variant":"#003ea8","on-tertiary-fixed-variant":"#3a485b","inverse-surface":"#2d3133","on-background":"#191c1e","background":"#f7f9fb","primary-fixed-dim":"#bec6e0","tertiary":"#000000","primary":"#000000","surface-container-high":"#e6e8ea","error-container":"#ffdad6","on-error":"#ffffff","on-primary-fixed":"#131b2e","outline-variant":"#c6c6cd","surface-bright":"#f7f9fb","on-secondary-container":"#fefcff","surface-variant":"#e0e3e5","on-tertiary-container":"#77859a","on-error-container":"#93000a","secondary-fixed":"#dbe1ff","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#b4c5ff","surface-container-low":"#f2f4f6","on-primary":"#ffffff","primary-fixed":"#dae2fd","surface":"#f7f9fb","secondary-container":"#316bf3","primary-container":"#131b2e","on-primary-fixed-variant":"#3f465c","inverse-on-surface":"#eff1f3","surface-container":"#eceef0","on-tertiary-fixed":"#0d1c2e","on-surface":"#191c1e","on-primary-container":"#7c839b","surface-tint":"#565e74"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-md":"0.75rem","gutter-lg":"1.5rem","space-xs":"0.25rem","space-sm":"0.5rem","space-xl":"1.5rem","space-2xs":"0.125rem","space-lg":"1rem","gutter":"1rem","margin":"1rem","space-2xl":"2rem","margin-lg":"1.5rem"},fontFamily:{"body-md":["Inter"],"table-header":["Inter"],"headline-md":["Inter"],"metric-tabular":["JetBrains Mono"],"body-sm":["Inter"],"headline-lg":["Inter"],"headline-sm":["Inter"],"display":["Inter"],"body-lg":["Inter"],"label-code":["JetBrains Mono"]},fontSize:{"body-md":["0.875rem",{"lineHeight":"1.25rem","fontWeight":"400"}],"table-header":["0.6875rem",{"lineHeight":"1rem","letterSpacing":"0.05em","fontWeight":"600"}],"headline-md":["1.25rem",{"lineHeight":"1.75rem","letterSpacing":"-0.015em","fontWeight":"600"}],"metric-tabular":["1.125rem",{"lineHeight":"1.5rem","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"400"}],"headline-lg":["1.5rem",{"lineHeight":"2rem","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-sm":["1rem",{"lineHeight":"1.5rem","letterSpacing":"-0.01em","fontWeight":"600"}],"display":["1.875rem",{"lineHeight":"2.25rem","letterSpacing":"-0.025em","fontWeight":"700"}],"body-lg":["1rem",{"lineHeight":"1.5rem","fontWeight":"400"}],"label-code":["0.75rem",{"lineHeight":"1rem","letterSpacing":"0.025em","fontWeight":"500"}]}}}}</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 left-0 right-0 z-50 w-full"><div class="h-28 flex flex-col"><div class="h-14 bg-primary-container px-margin-lg flex items-center justify-between text-on-primary border-b border-primary-container/40"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-secondary text-[22px]">shield_with_heart</span><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-surface-container-lowest font-bold">PHARMA SUPPLY CHAIN FRAGILITY MONITOR</span></div><span class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded bg-surface-container-highest/20 text-tertiary-fixed text-label-code font-label-code border border-tertiary-fixed/30"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-pulse"></span>FDA/CDS FEED LIVE</span></div><div class="flex items-center gap-space-lg"><div class="hidden md:flex items-center gap-space-md text-on-primary-container font-label-code text-label-code"><span class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary-container"></span>SYS ACTIVE</span><span class="text-outline-variant">|</span><span class="font-metric-tabular text-surface-bright">18:42:09 UTC</span><span class="text-outline-variant">|</span><span class="text-tertiary-fixed-dim">NODE: US-EAST-01</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="h-14 bg-surface-container-lowest px-margin-lg flex items-center justify-between border-b border-surface-container-high"><nav class="flex items-center gap-space-xs h-full py-space-xs" data-active-classes="bg-secondary-container text-on-secondary-container font-bold rounded-lg shadow-sm"><a class="px-space-md py-space-xs text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors flex items-center" data-path="operational-tower" href="#">Operational Tower</a><a aria-current="page" class="px-space-md py-space-xs transition-colors flex items-center bg-secondary-container text-on-secondary-container font-bold rounded-lg shadow-sm" data-path="network-lineage" href="#">Network Lineage</a><a class="px-space-md py-space-xs text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors flex items-center" data-path="iot-telemetry" href="#">IoT Telemetry</a><a class="px-space-md py-space-xs text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors flex items-center" data-path="disruption-simulator" href="#">Disruption Simulator</a><a class="px-space-md py-space-xs text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors flex items-center" data-path="root-cause-lab" href="#">Root Cause Lab</a><a class="px-space-md py-space-xs text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors flex items-center" data-path="polyglot-benchmarks" href="#">Polyglot Benchmarks</a></nav><div class="hidden lg:flex items-center gap-space-sm"><div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-space-2xs rounded border border-outline-variant/40 text-label-code font-label-code text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">search</span><span>FILTER REPOSITORY</span><kbd class="bg-surface-container px-space-xs py-0.5 rounded text-[10px] text-on-surface font-metric-tabular">⌘K</kbd></div><span class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded bg-surface-container-high text-on-surface text-label-code font-label-code"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>PROD-LIVE</span></div></div></div><div class="w-full bg-surface-container-low px-margin-lg py-space-xs border-b border-surface-container-high flex flex-wrap items-center justify-between gap-space-md"><div class="flex flex-wrap items-center gap-space-lg text-body-sm font-body-sm"><div class="flex items-center gap-space-xs text-on-surface"><span class="text-on-surface-variant font-label-code text-label-code uppercase tracking-wider">Domain Scope:</span><span class="font-headline-sm text-body-sm text-primary">Critical Injectables &amp; Oncology</span></div><span class="text-outline-variant hidden sm:inline">•</span><div class="flex items-center gap-space-xs"><span class="text-on-surface-variant font-label-code text-label-code uppercase tracking-wider">Surveillance:</span><span class="font-label-code text-label-code text-on-surface">USP &lt;659&gt; / EMA GMP Annex 1</span></div><span class="text-outline-variant hidden md:inline">•</span><div class="flex items-center gap-space-xs"><span class="text-on-surface-variant font-label-code text-label-code uppercase tracking-wider">Active Incidents:</span><span class="inline-flex items-center px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-metric-tabular text-label-code font-bold">4 Critical</span></div></div><div class="flex items-center gap-space-md text-label-code font-label-code"><span class="text-on-surface-variant">Audit Integrity:</span><span class="text-secondary flex items-center gap-space-2xs font-semibold"><span class="material-symbols-outlined text-[16px]">verified</span>VALIDATED CFR 21 P11</span></div></div></header><main class="w-full pt-36 bg-background flex-1 px-margin-lg"><div class="flex flex-col w-full">
+<!-- Query & Topology Control Toolbar -->
+<section class="w-full bg-surface-container-lowest p-space-md shadow-sm rounded-lg flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<!-- Left Controls: Graph Parameters -->
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Hop Distance -->
+<div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1.5 rounded-lg shadow-sm">
+<label class="font-table-header text-table-header text-on-surface-variant uppercase" for="hop-select">Max Hop Distance:</label>
+<select class="bg-surface-container-lowest text-on-surface font-metric-tabular text-label-code px-space-xs py-0.5 rounded focus:outline-none" id="hop-select">
+<option value="1">1 Hop</option>
+<option value="2">2 Hops</option>
+<option selected="" value="3">3 Hops</option>
+<option value="4">4 Hops</option>
+<option value="5">5 Hops (Full E2E)</option>
+</select>
+</div>
+<!-- Centrality Filter -->
+<div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1.5 rounded-lg shadow-sm">
+<label class="font-table-header text-table-header text-on-surface-variant uppercase" for="centrality-input">Betweenness:</label>
+<span class="font-metric-tabular text-label-code text-on-surface font-semibold">&gt;</span>
+<input class="w-16 bg-surface-container-lowest text-on-surface font-metric-tabular text-label-code px-space-xs py-0.5 rounded text-center focus:outline-none" id="centrality-input" type="text" value="0.005"/>
+<span class="text-on-surface-variant font-label-code text-[10px]">σ(s,t|v)</span>
+</div>
+<!-- Filter Toggle Button -->
+<button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-secondary-fixed text-on-secondary-fixed font-label-code text-label-code font-semibold shadow-sm transition-all hover:bg-secondary-fixed-dim" id="cold-chain-toggle">
+<span class="material-symbols-outlined text-[16px] text-secondary">ac_unit</span>
+<span>Cold-Chain Certified (2-8°C CRT)</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+</div>
+<!-- Right Controls: Action & Live Topology Telemetry -->
+<div class="flex items-center gap-space-md">
+<div class="hidden xl:flex items-center gap-space-xs font-label-code text-label-code bg-surface-container px-space-sm py-1.5 rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-secondary">hub</span>
+<span class="font-metric-tabular text-on-surface font-semibold">128</span> Nodes
+          <span class="text-outline-variant">/</span>
+<span class="font-metric-tabular text-on-surface font-semibold">312</span> Edges
+          <span class="text-outline-variant">/</span>
+<span class="font-metric-tabular text-secondary font-bold">4</span> Tier Stages
+        </div>
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-secondary text-on-secondary font-headline-sm text-body-sm shadow hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">rebase_edit</span>
+<span>Recompute Lineage Topology</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Main 2-Column Split Workspace -->
+<div class="mt-space-lg grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT 70% CANVAS: Graph Visualization & Provenance Audit Table -->
+<div class="lg:col-span-8 xl:col-span-9 flex flex-col gap-space-lg min-w-0">
+<!-- Topology Canvas Card -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden flex flex-col">
+<!-- Canvas Top Toolbar -->
+<div class="px-space-md py-space-sm bg-surface-container-low flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-sm text-body-sm text-primary uppercase tracking-wider flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">account_tree</span>
+              Directed Multi-Tier API &amp; Injectable Lineage
+            </span>
+<span class="bg-error-container text-on-error-container text-label-code font-label-code px-space-xs py-0.5 rounded font-bold">
+              1 CRITICAL BOTTLENECK
+            </span>
+</div>
+<!-- Canvas Zoom/View Options -->
+<div class="flex items-center gap-space-xs font-label-code text-body-sm text-on-surface-variant">
+<button class="p-1 rounded hover:bg-surface-container text-on-surface" title="Zoom in">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface" title="Zoom out">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface" title="Reset view">
+<span class="material-symbols-outlined text-[18px]">center_focus_strong</span>
+</button>
+<span class="text-outline-variant">|</span>
+<span class="text-label-code font-metric-tabular">ZOOM 100%</span>
+</div>
+</div>
+<!-- Swimlane Headers -->
+<div class="grid grid-cols-4 bg-surface-container-high/60 text-center font-table-header text-table-header text-on-surface-variant uppercase tracking-wider py-space-xs">
+<div class="flex items-center justify-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim"></span>
+            Tier-1 API Synthesis
+          </div>
+<div class="flex items-center justify-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+            Formulation &amp; Fill-Finish
+          </div>
+<div class="flex items-center justify-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            Regional Distribution Hubs
+          </div>
+<div class="flex items-center justify-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+            Clinical Point-of-Care
+          </div>
+</div>
+<!-- Embedded Interactive SVG Topology Canvas -->
+<div class="relative w-full h-[520px] bg-surface-bright overflow-hidden select-none">
+<!-- Background Grid Overlay -->
+<div class="absolute inset-0 bg-[radial-gradient(#c6c6cd_1px,transparent_1px)] [background-size:24px_24px] opacity-40"></div>
+<!-- Vertical Swimlane Dividing Tint Columns -->
+<div class="absolute inset-0 grid grid-cols-4 pointer-events-none">
+<div class="bg-transparent"></div>
+<div class="bg-surface-container-low/40"></div>
+<div class="bg-transparent"></div>
+<div class="bg-surface-container-low/40"></div>
+</div>
+<!-- SVG Flow Graph -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="xMidYMid meet" viewbox="0 0 1000 520">
+<defs>
+<!-- Arrow Marker Blue -->
+<marker id="arrow-blue" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="24" refy="5" viewbox="0 0 10 10">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0051d5"></path>
+</marker>
+<!-- Arrow Marker Red Alert -->
+<marker id="arrow-red" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="24" refy="5" viewbox="0 0 10 10">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#ba1a1a"></path>
+</marker>
+<!-- Arrow Marker Amber -->
+<marker id="arrow-amber" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="24" refy="5" viewbox="0 0 10 10">
+<path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#76777d"></path>
+</marker>
+<!-- Focus Radar Ring Animation -->
+<radialgradient cx="50%" cy="50%" id="halo-glow" r="50%">
+<stop offset="0%" stop-color="#ffdad6" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#ffdad6" stop-opacity="0"></stop>
+</radialgradient>
+</defs>
+<!-- Directed Connector Edges -->
+<!-- Pfizer Ringaskiddy -> Hospira McPherson -->
+<path d="M 125 150 C 230 150, 270 240, 375 250" fill="none" marker-end="url(#arrow-red)" stroke="#ba1a1a" stroke-dasharray="6 3" stroke-width="2.5"></path>
+<!-- Lonza Basel -> Hospira McPherson -->
+<path d="M 125 320 C 230 320, 270 260, 375 250" fill="none" marker-end="url(#arrow-red)" stroke="#ba1a1a" stroke-width="2"></path>
+<!-- Cambrex Charles City -> Hospira McPherson -->
+<path d="M 125 430 C 230 430, 290 280, 375 250" fill="none" marker-end="url(#arrow-blue)" stroke="#0051d5" stroke-width="1.8"></path>
+<!-- Cambrex Charles City -> Hikma Columbus -->
+<path d="M 125 430 C 240 430, 270 410, 375 410" fill="none" marker-end="url(#arrow-amber)" stroke="#76777d" stroke-width="1.5"></path>
+<!-- Hospira McPherson -> McKesson Memphis -->
+<path d="M 375 250 C 490 250, 520 170, 625 170" fill="none" marker-end="url(#arrow-red)" stroke="#ba1a1a" stroke-width="3"></path>
+<!-- Hospira McPherson -> AmerisourceBergen Dallas -->
+<path d="M 375 250 C 490 250, 520 330, 625 330" fill="none" marker-end="url(#arrow-red)" stroke="#ba1a1a" stroke-width="2.5"></path>
+<!-- Hikma Columbus -> AmerisourceBergen Dallas -->
+<path d="M 375 410 C 500 410, 510 350, 625 330" fill="none" marker-end="url(#arrow-blue)" stroke="#0051d5" stroke-width="1.5"></path>
+<!-- Hikma Columbus -> Cardinal Health Grove City -->
+<path d="M 375 410 C 500 410, 520 460, 625 460" fill="none" marker-end="url(#arrow-blue)" stroke="#0051d5" stroke-width="1.5"></path>
+<!-- McKesson Memphis -> Mayo Clinic -->
+<path d="M 625 170 C 740 170, 770 120, 875 120" fill="none" marker-end="url(#arrow-red)" stroke="#ba1a1a" stroke-width="2.2"></path>
+<!-- McKesson Memphis -> Johns Hopkins -->
+<path d="M 625 170 C 740 170, 770 230, 875 230" fill="none" marker-end="url(#arrow-blue)" stroke="#0051d5" stroke-width="1.8"></path>
+<!-- AmerisourceBergen Dallas -> Memorial Sloan Kettering -->
+<path d="M 625 330 C 740 330, 770 340, 875 340" fill="none" marker-end="url(#arrow-red)" stroke="#ba1a1a" stroke-width="2"></path>
+<!-- Cardinal Health -> Mass General -->
+<path d="M 625 460 C 740 460, 770 450, 875 450" fill="none" marker-end="url(#arrow-blue)" stroke="#0051d5" stroke-width="1.8"></path>
+<!-- Transit Badge Pill Overlays on Edges -->
+<g transform="translate(230, 185)">
+<rect fill="#ffdad6" height="18" rx="4" width="62" x="0" y="0"></rect>
+<text fill="#93000a" font-family="JetBrains Mono" font-size="10" font-weight="600" text-anchor="middle" x="31" y="13">5.8d AIR</text>
+</g>
+<g transform="translate(480, 195)">
+<rect fill="#ffdad6" height="18" rx="4" width="70" x="0" y="0"></rect>
+<text fill="#93000a" font-family="JetBrains Mono" font-size="10" font-weight="600" text-anchor="middle" x="35" y="13">2.1d REEFER</text>
+</g>
+<g transform="translate(735, 130)">
+<rect fill="#d5e3fc" height="18" rx="4" width="60" x="0" y="0"></rect>
+<text fill="#003ea8" font-family="JetBrains Mono" font-size="10" font-weight="600" text-anchor="middle" x="30" y="13">14h COLD</text>
+</g>
+<!-- TIER 1 NODES -->
+<!-- Pfizer Ringaskiddy -->
+<g transform="translate(125, 150)">
+<circle fill="#ffffff" r="18" stroke="#0051d5" stroke-width="3"></circle>
+<circle fill="#0051d5" r="6"></circle>
+<text fill="#191c1e" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="-24" y="-24">Pfizer Ringaskiddy</text>
+<text fill="#76777d" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="-24" y="-12">FEI-3001827 • API Synth</text>
+</g>
+<!-- Lonza Basel -->
+<g transform="translate(125, 320)">
+<circle fill="#ffffff" r="16" stroke="#0051d5" stroke-width="2.5"></circle>
+<circle fill="#0051d5" r="5"></circle>
+<text fill="#191c1e" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="-24" y="-22">Lonza AG Basel</text>
+<text fill="#76777d" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="-24" y="-10">FEI-3002981 • Precursor</text>
+</g>
+<!-- Cambrex Charles City -->
+<g transform="translate(125, 430)">
+<circle fill="#ffffff" r="16" stroke="#76777d" stroke-width="2"></circle>
+<circle fill="#76777d" r="5"></circle>
+<text fill="#191c1e" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="-24" y="-22">Cambrex Charles City</text>
+<text fill="#76777d" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="-24" y="-10">FEI-1910231 • Raw Mat</text>
+</g>
+<!-- TIER 2 FORMULATION NODES -->
+<!-- SELECTED NODE: Hospira McPherson (FEI-1002381) -->
+<g transform="translate(375, 250)">
+<!-- Radar Pulse Ring -->
+<circle class="animate-pulse" fill="url(#halo-glow)" r="36"></circle>
+<circle fill="none" r="26" stroke="#ba1a1a" stroke-dasharray="4 2" stroke-width="1.5"></circle>
+<!-- Core Node -->
+<circle fill="#ffdad6" r="19" stroke="#ba1a1a" stroke-width="3"></circle>
+<circle fill="#ba1a1a" r="7"></circle>
+<!-- Highlight Target Indicator -->
+<circle fill="#ffffff" r="3"></circle>
+<!-- Tag Card Floating -->
+<rect fill="#131b2e" height="26" rx="4" width="170" x="-85" y="-56"></rect>
+<text fill="#ffffff" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="0" y="-40">Hospira McPherson (Active)</text>
+<text fill="#bec6e0" font-family="JetBrains Mono" font-size="8.5" text-anchor="middle" x="0" y="-28">FEI-1002381 • C_BETWEEN: 0.0842</text>
+</g>
+<!-- Hikma Columbus -->
+<g transform="translate(375, 410)">
+<circle fill="#ffffff" r="16" stroke="#0051d5" stroke-width="2"></circle>
+<circle fill="#0051d5" r="5"></circle>
+<text fill="#191c1e" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="0" y="30">Hikma Columbus</text>
+<text fill="#76777d" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="0" y="42">FEI-1510940 • Sterile Vials</text>
+</g>
+<!-- TIER 3 REGIONAL HUBS -->
+<!-- McKesson Memphis -->
+<g transform="translate(625, 170)">
+<circle fill="#ffffff" r="18" stroke="#ba1a1a" stroke-width="2.5"></circle>
+<circle fill="#ba1a1a" r="6"></circle>
+<text fill="#191c1e" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="0" y="-26">McKesson Hub Memphis</text>
+<text fill="#93000a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="0" y="-14">FEI-3012901 • Tier 3 Critical</text>
+</g>
+<!-- AmerisourceBergen Dallas -->
+<g transform="translate(625, 330)">
+<circle fill="#ffffff" r="17" stroke="#0051d5" stroke-width="2"></circle>
+<circle fill="#0051d5" r="5"></circle>
+<text fill="#191c1e" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="0" y="28">AmerisourceBergen Dallas</text>
+<text fill="#76777d" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="0" y="40">FEI-3004481 • Cross-Dock</text>
+</g>
+<!-- Cardinal Health Grove City -->
+<g transform="translate(625, 460)">
+<circle fill="#ffffff" r="16" stroke="#76777d" stroke-width="2"></circle>
+<circle fill="#76777d" r="5"></circle>
+<text fill="#191c1e" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="0" y="28">Cardinal Health Grove City</text>
+<text fill="#76777d" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="0" y="40">FEI-1518820 • Secondary</text>
+</g>
+<!-- TIER 4 CLINICAL SITES -->
+<!-- Mayo Clinic -->
+<g transform="translate(875, 120)">
+<rect fill="#ffffff" height="28" rx="4" stroke="#ba1a1a" stroke-width="2" width="28" x="-14" y="-14"></rect>
+<text fill="#ba1a1a" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="0" y="4">MC</text>
+<text fill="#191c1e" font-family="Inter" font-size="11" font-weight="600" text-anchor="start" x="24" y="-4">Mayo Clinic Rochester</text>
+<text fill="#93000a" font-family="JetBrains Mono" font-size="9" text-anchor="start" x="24" y="8">Inv: 3.2 Days (Critical)</text>
+</g>
+<!-- Johns Hopkins -->
+<g transform="translate(875, 230)">
+<rect fill="#ffffff" height="28" rx="4" stroke="#0051d5" stroke-width="2" width="28" x="-14" y="-14"></rect>
+<text fill="#0051d5" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="0" y="4">JH</text>
+<text fill="#191c1e" font-family="Inter" font-size="11" font-weight="600" text-anchor="start" x="24" y="-4">Johns Hopkins Hosp</text>
+<text fill="#76777d" font-family="JetBrains Mono" font-size="9" text-anchor="start" x="24" y="8">Inv: 14.8 Days (Normal)</text>
+</g>
+<!-- Memorial Sloan Kettering -->
+<g transform="translate(875, 340)">
+<rect fill="#ffffff" height="28" rx="4" stroke="#ba1a1a" stroke-width="2" width="28" x="-14" y="-14"></rect>
+<text fill="#ba1a1a" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="0" y="4">SK</text>
+<text fill="#191c1e" font-family="Inter" font-size="11" font-weight="600" text-anchor="start" x="24" y="-4">MSK Cancer Center</text>
+<text fill="#93000a" font-family="JetBrains Mono" font-size="9" text-anchor="start" x="24" y="8">Inv: 4.1 Days (At Risk)</text>
+</g>
+<!-- Mass General -->
+<g transform="translate(875, 450)">
+<rect fill="#ffffff" height="28" rx="4" stroke="#76777d" stroke-width="1.8" width="28" x="-14" y="-14"></rect>
+<text fill="#76777d" font-family="Inter" font-size="11" font-weight="700" text-anchor="middle" x="0" y="4">MG</text>
+<text fill="#191c1e" font-family="Inter" font-size="11" font-weight="600" text-anchor="start" x="24" y="-4">Mass General Brigham</text>
+<text fill="#76777d" font-family="JetBrains Mono" font-size="9" text-anchor="start" x="24" y="8">Inv: 22.0 Days (Buffered)</text>
+</g>
+</svg>
+<!-- Graph Topology Legend (Docked Bottom-Left) -->
+<div class="absolute bottom-3 left-3 bg-surface-container-lowest/95 backdrop-blur px-space-md py-space-xs rounded-lg shadow-sm flex items-center gap-space-md text-label-code font-label-code">
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-error"></span>Critical Bottleneck</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>Validated CRT Line</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-outline"></span>Secondary Route</span>
+<span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-error border-b border-dashed"></span>Lead-Time Excursion</span>
+</div>
+</div>
+</div>
+<!-- Provenance Audit Trail & Custody Sign-Offs (Bottom Left Section) -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden flex flex-col">
+<div class="px-space-md py-space-sm bg-surface-container-low flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">verified_user</span>
+<span class="font-headline-sm text-body-sm text-primary uppercase tracking-wider">Cryptographic Provenance Chain (Drug Master File 029141)</span>
+</div>
+<div class="flex items-center gap-space-md font-label-code text-body-sm">
+<span class="text-on-surface-variant">Ledger: <span class="text-on-surface font-metric-tabular">CFR-21-P11-SIG-VALID</span></span>
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 bg-surface-container-highest rounded text-on-surface text-label-code">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>6 Custody Sign-Offs Verified
+            </span>
+</div>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container text-on-surface-variant font-table-header text-table-header uppercase tracking-wider">
+<tr>
+<th class="py-space-xs px-space-md">SHA-256 Batch HASH</th>
+<th class="py-space-xs px-space-md">Product / Formulation</th>
+<th class="py-space-xs px-space-md">Custodian Organization</th>
+<th class="py-space-xs px-space-md">Departure (UTC)</th>
+<th class="py-space-xs px-space-md">Arrival (UTC)</th>
+<th class="py-space-xs px-space-md">Cold Excursion</th>
+<th class="py-space-xs px-space-md text-right">Digital Sign-Off</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high font-body-sm text-body-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-sm px-space-md font-metric-tabular text-label-code text-secondary font-semibold">
+                  0x8f2a...c091
+                </td>
+<td class="py-space-sm px-space-md text-on-surface font-medium">
+                  Fentanyl Citrate Inj 50mcg/mL (10mL)
+                </td>
+<td class="py-space-sm px-space-md text-on-surface">
+                  Pfizer API Synthesis Cork (FEI-3001827)
+                </td>
+<td class="py-space-sm px-space-md font-metric-tabular text-on-surface-variant">
+                  2026-04-14 06:12:00
+                </td>
+<td class="py-space-sm px-space-md font-metric-tabular text-on-surface-variant">
+                  2026-04-16 11:45:22
+                </td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface text-label-code font-label-code">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>0 Breaches / Compliant
+                  </span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1 text-secondary font-label-code text-label-code font-bold">
+<span class="material-symbols-outlined text-[15px]">done_all</span>VALID (RSA-4096)
+                  </span>
+</td>
+</tr>
+<!-- Row 2 (Active Bottleneck Focus) -->
+<tr class="bg-error-container/20 hover:bg-error-container/30 transition-colors">
+<td class="py-space-sm px-space-md font-metric-tabular text-label-code text-error font-semibold">
+                  0x4d3b...ee19
+                </td>
+<td class="py-space-sm px-space-md text-on-surface font-medium">
+                  Fentanyl Citrate Inj 50mcg/mL (Batch #FN-26-908)
+                </td>
+<td class="py-space-sm px-space-md text-on-surface font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-error text-[16px]">warning</span>
+                  Hospira Inc. - McPherson (FEI-1002381)
+                </td>
+<td class="py-space-sm px-space-md font-metric-tabular text-on-surface-variant">
+                  2026-04-18 09:20:10
+                </td>
+<td class="py-space-sm px-space-md font-metric-tabular text-on-surface-variant">
+                  2026-04-18 19:30:00
+                </td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-error-container text-on-error-container text-label-code font-label-code font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>QA Hold / In-Review
+                  </span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1 text-error font-label-code text-label-code font-bold">
+<span class="material-symbols-outlined text-[15px]">flag</span>OAI AUDIT FLAG
+                  </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-sm px-space-md font-metric-tabular text-label-code text-secondary font-semibold">
+                  0x11a9...54f2
+                </td>
+<td class="py-space-sm px-space-md text-on-surface font-medium">
+                  Fentanyl Citrate Finished Vials (Pallet ID #4810)
+                </td>
+<td class="py-space-sm px-space-md text-on-surface">
+                  McKesson Hub Memphis (FEI-3012901)
+                </td>
+<td class="py-space-sm px-space-md font-metric-tabular text-on-surface-variant">
+                  2026-04-20 02:00:00
+                </td>
+<td class="py-space-sm px-space-md font-metric-tabular text-on-surface-variant">
+                  2026-04-21 14:10:00
+                </td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface text-label-code font-label-code">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>0 Breaches / 4.1°C Mean
+                  </span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1 text-secondary font-label-code text-label-code font-bold">
+<span class="material-symbols-outlined text-[15px]">done_all</span>VALID (ECDSA-256)
+                  </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- RIGHT 30% INSPECTOR RAIL (320px - 360px) -->
+<aside class="lg:col-span-4 xl:col-span-3 flex flex-col gap-space-lg">
+<!-- Facility Header Inspector Card -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm p-space-md flex flex-col gap-space-md">
+<!-- Inspector Title Header -->
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-block w-2 h-2 rounded-full bg-error animate-ping"></span>
+<span class="font-table-header text-table-header uppercase text-error">CRITICAL BOTTLENECK NODE</span>
+</div>
+<h2 class="font-headline-lg text-headline-sm text-on-surface font-bold mt-1">Hospira Inc. - McPherson Unit</h2>
+<div class="font-label-code text-label-code text-on-surface-variant mt-0.5">FEI: 1002381 • DUNS: 00-692-4914</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[26px]">domain</span>
+</div>
+<!-- Vulnerability Score Badge Bar -->
+<div class="bg-error-container/40 p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between text-on-error-container">
+<span class="font-table-header text-table-header uppercase font-bold">Fragility Vulnerability Index</span>
+<span class="font-metric-tabular text-body-lg font-bold text-error">88 / 100</span>
+</div>
+<!-- Micro Bar Progress -->
+<div class="w-full bg-surface-container-highest h-2 rounded overflow-hidden">
+<div class="bg-error h-full rounded" style="width: 88%"></div>
+</div>
+<span class="font-body-sm text-[11px] text-on-error-container leading-tight">
+            High single-point-of-failure exposure. Outage will deplete regional stock in 11.4 business days.
+          </span>
+</div>
+<!-- Inspection & Compliance Status -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-table-header text-table-header text-on-surface-variant uppercase">cGMP Inspection Status</span>
+<span class="px-space-xs py-0.5 bg-error text-on-error font-label-code text-[11px] font-bold rounded">OAI</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface font-semibold">
+            FDA WARNING LETTER (WL-320-26-44)
+          </div>
+<div class="font-label-code text-body-sm text-on-surface-variant flex items-center justify-between">
+<span>Official Action Indicated:</span>
+<span class="font-metric-tabular text-on-surface">2026-04-12</span>
+</div>
+</div>
+<!-- Storage & Cold-Chain Specs -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-table-header text-table-header text-on-surface-variant uppercase">Cold Storage Certifications</span>
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="bg-surface-container-low p-space-xs rounded text-center">
+<div class="font-label-code text-[11px] text-on-surface-variant">CRT (20-25°C)</div>
+<div class="font-body-sm font-semibold text-secondary flex items-center justify-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>CERTIFIED
+              </div>
+</div>
+<div class="bg-surface-container-low p-space-xs rounded text-center">
+<div class="font-label-code text-[11px] text-on-surface-variant">Cold (2-8°C)</div>
+<div class="font-body-sm font-semibold text-secondary flex items-center justify-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>VALIDATED
+              </div>
+</div>
+</div>
+</div>
+<!-- Centrality & Graph Metrics Grid -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-space-sm">
+<span class="font-table-header text-table-header text-on-surface-variant uppercase">Graph Centrality Metrics</span>
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label-code text-[11px]">Degree Centrality</span>
+<span class="font-metric-tabular text-headline-sm text-on-surface font-bold">14</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">3 In / 11 Out</span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label-code text-[11px]">Betweenness</span>
+<span class="font-metric-tabular text-headline-sm text-error font-bold">0.0842</span>
+<span class="font-body-sm text-[11px] text-error font-medium">Top 1% Criticality</span>
+</div>
+</div>
+<div class="h-px bg-surface-container-highest w-full my-1"></div>
+<div class="flex flex-col gap-1 font-body-sm">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Upstream Suppliers (Tier-1):</span>
+<span class="font-metric-tabular font-semibold text-on-surface">3 Active Sources</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Downstream Regional Hubs:</span>
+<span class="font-metric-tabular font-semibold text-on-surface">42 Cross-Docks</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Impacted Hospital Systems:</span>
+<span class="font-metric-tabular font-bold text-error">218 Facilities</span>
+</div>
+</div>
+</div>
+<!-- Lineage Action Controls -->
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<span class="font-table-header text-table-header text-on-surface-variant uppercase mb-1">Operational Interventions</span>
+<button class="w-full flex items-center justify-center gap-space-xs py-space-sm px-space-md bg-secondary text-on-secondary font-headline-sm text-body-sm rounded-lg shadow transition-colors hover:bg-secondary-container">
+<span class="material-symbols-outlined text-[18px]">science</span>
+<span>Simulate Outage (/simulate)</span>
+</button>
+<button class="w-full flex items-center justify-center gap-space-xs py-space-sm px-space-md bg-surface-container text-error font-headline-sm text-body-sm rounded-lg hover:bg-error-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">block</span>
+<span>Isolate Node from Dispatch</span>
+</button>
+<button class="w-full flex items-center justify-center gap-space-xs py-space-sm px-space-md bg-surface-container-low text-on-surface font-headline-sm text-body-sm rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span>Export Graph ML (GEXF)</span>
+</button>
+</div>
+</div>
+<!-- Historical Excursion Sparkline Micro Card -->
+<div class="bg-surface-container-lowest rounded-lg shadow-sm p-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-table-header text-table-header text-on-surface-variant uppercase">30-Day Excursion Trend</span>
+<span class="text-error font-label-code text-label-code font-bold">+18.4% Drift</span>
+</div>
+<!-- Micro Inline SVG Sparkline -->
+<div class="w-full h-12 py-1">
+<svg class="w-full h-full" fill="none" viewbox="0 0 280 44">
+<path d="M0 35 L40 32 L80 34 L120 28 L160 30 L200 18 L240 12 L280 4" stroke="#ba1a1a" stroke-linecap="round" stroke-width="2"></path>
+<path d="M0 35 L40 32 L80 34 L120 28 L160 30 L200 18 L240 12 L280 4 L280 44 L0 44 Z" fill="#ffdad6" opacity="0.3"></path>
+</svg>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-code text-[11px]">
+<span>Day 0 (Baseline)</span>
+<span>Day 30 (Current Batch)</span>
+</div>
+</div>
+</aside>
+</div>
+<!-- Interactive script for Cold-Chain toggle & client micro-interactions -->
+<script>
+    (function initGraphExplorer() {
+      const toggle = document.getElementById('cold-chain-toggle');
+      if (toggle) {
+        let active = true;
+        toggle.addEventListener('click', function() {
+          active = !active;
+          if (active) {
+            toggle.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+            toggle.classList.add('bg-secondary-fixed', 'text-on-secondary-fixed');
+          } else {
+            toggle.classList.remove('bg-secondary-fixed', 'text-on-secondary-fixed');
+            toggle.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+          }
+        });
+      }
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-surface-container-high py-space-md mt-space-2xl"><div class="w-full px-margin-lg flex flex-col md:flex-row items-center justify-between gap-space-sm text-label-code font-label-code text-on-surface-variant"><div class="flex items-center gap-space-md flex-wrap"><span>CONSOLE ID: <span class="font-metric-tabular text-on-surface">MON-PSC-9821-X</span></span><span class="text-outline-variant">|</span><span>NODE STATUS: <span class="text-secondary font-semibold">PRIMARY CLUSTER 99.998%</span></span><span class="text-outline-variant">|</span><span>PROTOCOL: <span class="text-on-surface">TLS 1.3 / ENCRYPTED CDC-FDA BUS</span></span></div><div class="flex items-center gap-space-lg text-body-sm font-body-sm"><span>GMP Electronic Record Master Archive</span><span>© 2024 Pharma Supply Chain Telemetry Group</span></div></div></footer></body></html>

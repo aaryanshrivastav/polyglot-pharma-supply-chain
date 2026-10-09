@@ -137,3 +137,52 @@ class TestPolyglotBackendAPI:
         assert "X-Process-Time-Ms" in response.headers, "Response must include X-Process-Time-Ms header"
         latency_val = float(response.headers["X-Process-Time-Ms"])
         assert latency_val >= 0.0, "Latency measurement must be non-negative"
+
+    def test_get_events_when_queried_should_return_recent_event_records(self):
+        # Act
+        response = client.get("/events?limit=5")
+
+        # Assert
+        assert response.status_code == 200
+        data = response.json()
+        assert "count" in data
+        assert "events" in data
+        assert len(data["events"]) > 0
+        first_evt = data["events"][0]
+        assert "id" in first_evt
+        assert "type" in first_evt
+        assert "message" in first_evt
+
+    def test_record_event_when_posted_should_prepend_to_event_stream(self):
+        # Arrange
+        payload = {
+            "type": "DISRUPTION",
+            "message": "Cold-chain alert: temperature exceeded 8C in transit",
+            "facility_or_drug": "DRUG-0093-7679"
+        }
+
+        # Act
+        response = client.post("/events", json=payload)
+
+        # Assert
+        assert response.status_code == 200
+        data = response.json()
+        assert data["status"] == "SUCCESS"
+        assert data["event"]["type"] == "DISRUPTION"
+        assert "Cold-chain alert" in data["event"]["message"]
+
+    def test_get_network_topology_when_queried_should_return_nodes_and_edges(self):
+        # Act
+        response = client.get("/network/topology")
+
+        # Assert
+        assert response.status_code == 200
+        data = response.json()
+        assert "nodes" in data
+        assert "edges" in data
+        assert data["node_count"] > 0
+        assert data["edge_count"] > 0
+        assert any(n["id"] == "EST-0001" for n in data["nodes"])
+        assert any(n["id"] == "EST-0002" for n in data["nodes"])
+
+

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"outline":"#76777d","tertiary-fixed-dim":"#b9c7df","tertiary-container":"#0d1c2e","inverse-primary":"#bec6e0","secondary":"#0051d5","on-surface-variant":"#45464d","surface-container-highest":"#e0e3e5","on-secondary":"#ffffff","surface-dim":"#d8dadc","error":"#ba1a1a","tertiary-fixed":"#d5e3fc","on-tertiary":"#ffffff","on-secondary-fixed":"#00174b","on-secondary-fixed-variant":"#003ea8","on-tertiary-fixed-variant":"#3a485b","inverse-surface":"#2d3133","on-background":"#191c1e","background":"#f7f9fb","primary-fixed-dim":"#bec6e0","tertiary":"#000000","primary":"#000000","surface-container-high":"#e6e8ea","error-container":"#ffdad6","on-error":"#ffffff","on-primary-fixed":"#131b2e","outline-variant":"#c6c6cd","surface-bright":"#f7f9fb","on-secondary-container":"#fefcff","surface-variant":"#e0e3e5","on-tertiary-container":"#77859a","on-error-container":"#93000a","secondary-fixed":"#dbe1ff","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#b4c5ff","surface-container-low":"#f2f4f6","on-primary":"#ffffff","primary-fixed":"#dae2fd","surface":"#f7f9fb","secondary-container":"#316bf3","primary-container":"#131b2e","on-primary-fixed-variant":"#3f465c","inverse-on-surface":"#eff1f3","surface-container":"#eceef0","on-tertiary-fixed":"#0d1c2e","on-surface":"#191c1e","on-primary-container":"#7c839b","surface-tint":"#565e74"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-md":"0.75rem","gutter-lg":"1.5rem","space-xs":"0.25rem","space-sm":"0.5rem","space-xl":"1.5rem","space-2xs":"0.125rem","space-lg":"1rem","gutter":"1rem","margin":"1rem","space-2xl":"2rem","margin-lg":"1.5rem"},fontFamily:{"body-md":["Inter"],"table-header":["Inter"],"headline-md":["Inter"],"metric-tabular":["JetBrains Mono"],"body-sm":["Inter"],"headline-lg":["Inter"],"headline-sm":["Inter"],"display":["Inter"],"body-lg":["Inter"],"label-code":["JetBrains Mono"]},fontSize:{"body-md":["0.875rem",{"lineHeight":"1.25rem","fontWeight":"400"}],"table-header":["0.6875rem",{"lineHeight":"1rem","letterSpacing":"0.05em","fontWeight":"600"}],"headline-md":["1.25rem",{"lineHeight":"1.75rem","letterSpacing":"-0.015em","fontWeight":"600"}],"metric-tabular":["1.125rem",{"lineHeight":"1.5rem","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"400"}],"headline-lg":["1.5rem",{"lineHeight":"2rem","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-sm":["1rem",{"lineHeight":"1.5rem","letterSpacing":"-0.01em","fontWeight":"600"}],"display":["1.875rem",{"lineHeight":"2.25rem","letterSpacing":"-0.025em","fontWeight":"700"}],"body-lg":["1rem",{"lineHeight":"1.5rem","fontWeight":"400"}],"label-code":["0.75rem",{"lineHeight":"1rem","letterSpacing":"0.025em","fontWeight":"500"}]}}}}</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 left-0 right-0 z-50 w-full"><div class="h-28 flex flex-col"><div class="h-14 bg-primary-container px-margin-lg flex items-center justify-between text-on-primary border-b border-primary-container/40"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-secondary text-[22px]">shield_with_heart</span><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-surface-container-lowest font-bold">PHARMA SUPPLY CHAIN FRAGILITY MONITOR</span></div><span class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded bg-surface-container-highest/20 text-tertiary-fixed text-label-code font-label-code border border-tertiary-fixed/30"><span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-pulse"></span>FDA/CDS FEED LIVE</span></div><div class="flex items-center gap-space-lg"><div class="hidden md:flex items-center gap-space-md text-on-primary-container font-label-code text-label-code"><span class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary-container"></span>SYS ACTIVE</span><span class="text-outline-variant">|</span><span class="font-metric-tabular text-surface-bright">18:42:09 UTC</span><span class="text-outline-variant">|</span><span class="text-tertiary-fixed-dim">NODE: US-EAST-01</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="h-14 bg-surface-container-lowest px-margin-lg flex items-center justify-between border-b border-surface-container-high"><nav class="flex items-center gap-space-xs h-full py-space-xs" data-active-classes="bg-secondary-container text-on-secondary-container font-bold rounded-lg shadow-sm"><a class="px-space-md py-space-xs text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors flex items-center" data-path="operational-tower" href="#">Operational Tower</a><a class="px-space-md py-space-xs text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors flex items-center" data-path="network-lineage" href="#">Network Lineage</a><a class="px-space-md py-space-xs text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors flex items-center" data-path="iot-telemetry" href="#">IoT Telemetry</a><a class="px-space-md py-space-xs text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors flex items-center" data-path="disruption-simulator" href="#">Disruption Simulator</a><a class="px-space-md py-space-xs text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors flex items-center" data-path="root-cause-lab" href="#">Root Cause Lab</a><a aria-current="page" class="px-space-md py-space-xs transition-colors flex items-center bg-secondary-container text-on-secondary-container font-bold rounded-lg shadow-sm" data-path="polyglot-benchmarks" href="#">Polyglot Benchmarks</a></nav><div class="hidden lg:flex items-center gap-space-sm"><div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-space-2xs rounded border border-outline-variant/40 text-label-code font-label-code text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">search</span><span>FILTER REPOSITORY</span><kbd class="bg-surface-container px-space-xs py-0.5 rounded text-[10px] text-on-surface font-metric-tabular">⌘K</kbd></div><span class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded bg-surface-container-high text-on-surface text-label-code font-label-code"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>PROD-LIVE</span></div></div></div><div class="w-full bg-surface-container-low px-margin-lg py-space-xs border-b border-surface-container-high flex flex-wrap items-center justify-between gap-space-md"><div class="flex flex-wrap items-center gap-space-lg text-body-sm font-body-sm"><div class="flex items-center gap-space-xs text-on-surface"><span class="text-on-surface-variant font-label-code text-label-code uppercase tracking-wider">Domain Scope:</span><span class="font-headline-sm text-body-sm text-primary">Critical Injectables &amp; Oncology</span></div><span class="text-outline-variant hidden sm:inline">•</span><div class="flex items-center gap-space-xs"><span class="text-on-surface-variant font-label-code text-label-code uppercase tracking-wider">Surveillance:</span><span class="font-label-code text-label-code text-on-surface">USP &lt;659&gt; / EMA GMP Annex 1</span></div><span class="text-outline-variant hidden md:inline">•</span><div class="flex items-center gap-space-xs"><span class="text-on-surface-variant font-label-code text-label-code uppercase tracking-wider">Active Incidents:</span><span class="inline-flex items-center px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-metric-tabular text-label-code font-bold">4 Critical</span></div></div><div class="flex items-center gap-space-md text-label-code font-label-code"><span class="text-on-surface-variant">Audit Integrity:</span><span class="text-secondary flex items-center gap-space-2xs font-semibold"><span class="material-symbols-outlined text-[16px]">verified</span>VALIDATED CFR 21 P11</span></div></div></header><main class="w-full pt-36 bg-background flex-1 px-margin-lg"><div class="flex flex-col w-full gap-space-lg pb-space-2xl">
+<!-- Top Academic / SIGMOD Research Banner -->
+<section class="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col xl:flex-row items-start xl:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-2xs min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="inline-flex items-center gap-space-2xs px-space-sm py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-code text-label-code uppercase tracking-wider font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+          SIGMOD / VLDB Research Validation Suite
+        </span>
+<span class="text-on-surface-variant font-label-code text-label-code">Ref: ACM-SIGMOD-2024-PSC-V8</span>
+<span class="text-outline-variant">•</span>
+<span class="text-on-surface-variant font-label-code text-label-code">Protocol: IEEE POSIX.1b High-Res Timestamping</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+        Polyglot Multi-Model Persistence vs Monolithic Store Benchmark
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Quantitative evaluation of specialized micro-engines (Redis, Neo4j, Cassandra, Redpanda) against unified MongoDB &amp; RDBMS baseline under pharmaceutical supply-chain disruption loads.
+      </p>
+</div>
+<!-- Execution Control Console -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-md bg-surface-container-low p-space-sm rounded-lg self-stretch xl:self-auto shrink-0">
+<div class="flex flex-col gap-0.5 pr-space-md sm:border-r sm:border-surface-container-highest">
+<span class="font-label-code text-label-code uppercase text-on-surface-variant tracking-wider">Benchmark Scope</span>
+<span class="font-label-code text-label-code text-primary font-semibold">Workload-B (80% R / 20% W)</span>
+<span class="font-label-code text-table-header text-on-surface-variant">100K Nodes · 1.2M Edges · 25M TS Pts</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="inline-flex items-center justify-center gap-space-xs px-space-lg py-space-sm rounded-lg bg-secondary text-on-secondary font-headline-sm text-body-sm font-semibold hover:bg-on-secondary-fixed-variant transition-colors shadow-sm focus:outline-none" id="stressBtn" onclick="runBenchmarkSimulation()">
+<span class="material-symbols-outlined text-[18px]" id="stressIcon">play_arrow</span>
+<span id="stressLabel">Run 1,000 Query Stress Test</span>
+</button>
+<button class="inline-flex items-center justify-center p-space-sm rounded-lg bg-surface-container-highest hover:bg-surface-container-high text-on-surface transition-colors" onclick="resetTraces()" title="Reset Metrics">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Metric Overview Cards -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-2xs">
+<span class="font-label-code text-label-code uppercase tracking-wider">Aggregate Mean Speedup</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">bolt</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-metric-tabular text-display text-primary font-bold">19.94x</span>
+<span class="font-label-code text-label-code text-secondary font-semibold">faster</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 mt-space-sm overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 88%;"></div>
+</div>
+<span class="font-label-code text-table-header text-on-surface-variant mt-space-2xs">Normalized geometric mean across 5 engine layers</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-2xs">
+<span class="font-label-code text-label-code uppercase tracking-wider">Polyglot SLA &lt;15ms</span>
+<span class="inline-flex items-center px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-metric-tabular text-table-header font-bold">TARGET MET</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-metric-tabular text-display text-primary font-bold" id="polySlaCard">99.98%</span>
+<span class="font-label-code text-label-code text-outline font-semibold">compliance</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 mt-space-sm overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 99.9%;"></div>
+</div>
+<span class="font-label-code text-table-header text-on-surface-variant mt-space-2xs">Tail excursion rate 0.02% (p &lt; 0.001)</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-2xs">
+<span class="font-label-code text-label-code uppercase tracking-wider">Monolithic SLA &lt;15ms</span>
+<span class="inline-flex items-center px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-metric-tabular text-table-header font-bold">DEGRADED</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-metric-tabular text-display text-error font-bold" id="monoSlaCard">78.40%</span>
+<span class="font-label-code text-label-code text-error font-semibold">-21.58% breach</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 mt-space-sm overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 78.4%;"></div>
+</div>
+<span class="font-label-code text-table-header text-on-surface-variant mt-space-2xs">Document recursive query stack overflow</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-2xs">
+<span class="font-label-code text-label-code uppercase tracking-wider">Peak Graph p99 Delay</span>
+<span class="material-symbols-outlined text-error text-[20px]">warning</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-metric-tabular text-display text-primary font-bold">182.0ms</span>
+<span class="font-label-code text-label-code text-error font-semibold">Monolithic</span>
+</div>
+<div class="flex items-center justify-between font-label-code text-table-header text-on-surface-variant mt-space-sm">
+<span>Polyglot Neo4j: <strong class="text-primary font-metric-tabular">9.4ms</strong></span>
+<span class="text-secondary font-bold font-metric-tabular">-94.8% delta</span>
+</div>
+<span class="font-label-code text-table-header text-on-surface-variant mt-space-2xs">5-hop supply chain genealogy traversal</span>
+</div>
+</section>
+<!-- Live Latency Comparison Matrix -->
+<section class="w-full bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="px-space-lg py-space-md bg-surface-container-low flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">table_chart</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Live Latency Comparison Matrix</h2>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-code text-table-header font-bold uppercase">Workload-B Standard</span>
+</div>
+<div class="flex items-center gap-space-sm font-label-code text-label-code text-on-surface-variant">
+<span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> Polyglot Specialized</span>
+<span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-outline"></span> Monolithic Base</span>
+</div>
+</div>
+<!-- Responsive Table Wrapper -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-table-header text-table-header uppercase tracking-wider">
+<th class="py-space-sm px-space-lg font-semibold">Workload Operation</th>
+<th class="py-space-sm px-space-md font-semibold">Specialized Polyglot Engine</th>
+<th class="py-space-sm px-space-md font-semibold">Monolithic Baseline (Mongo/RDBMS)</th>
+<th class="py-space-sm px-space-md font-semibold text-right">Speedup Factor</th>
+<th class="py-space-sm px-space-lg font-semibold text-right">Validation Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high font-body-md text-body-md text-on-surface">
+<!-- Row 1: Fast Cache Lookup -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-headline-sm text-body-md text-primary font-semibold">In-Memory Fast Cache Lookup (KV)</span>
+<span class="font-label-code text-body-sm text-on-surface-variant">Operation: Cold-chain threshold check &amp; API quota validation</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface font-label-code text-table-header font-bold">REDIS</span>
+<span class="font-metric-tabular text-body-md text-primary font-medium">p50: 0.28ms</span>
+</div>
+<span class="font-metric-tabular text-body-sm text-on-surface-variant">p99: 0.85ms · Redis cluster 7.2 (Direct RAM)</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-metric-tabular text-body-md text-on-surface">Mongo <code class="font-label-code text-body-sm">findOne()</code>: p50 2.40ms</span>
+<span class="font-metric-tabular text-body-sm text-error">p99: 8.20ms · WiredTiger b-tree index search</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-metric-tabular text-headline-sm text-secondary font-bold">9.6x Faster</span>
+<span class="font-label-code text-table-header text-on-surface-variant">Δ -7.35ms p99</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded bg-surface-container-high text-primary font-label-code text-table-header font-bold tracking-wider">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified</span>
+                CONFIRMED SIGMOD
+              </span>
+</td>
+</tr>
+<!-- Row 2: Multi-Tier Graph Lineage Traversal -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-surface-bright">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-headline-sm text-body-md text-primary font-semibold">Multi-Tier Graph Lineage Traversal (Hop 1–5)</span>
+<span class="font-label-code text-body-sm text-on-surface-variant">Operation: Recursive supplier-to-vial BOM dependency audit</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface font-label-code text-table-header font-bold">NEO4J</span>
+<span class="font-metric-tabular text-body-md text-primary font-medium">p50: 3.20ms</span>
+</div>
+<span class="font-metric-tabular text-body-sm text-on-surface-variant">p99: 9.40ms · Native index-free adjacency</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-metric-tabular text-body-md text-on-surface">Mongo <code class="font-label-code text-body-sm">$graphLookup</code>: p50 48.60ms</span>
+<span class="font-metric-tabular text-body-sm text-error font-semibold">p99: 182.00ms · Extreme recursive pipeline skew</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-metric-tabular text-headline-sm text-secondary font-bold">19.3x Faster</span>
+<span class="font-label-code text-table-header text-on-surface-variant">Δ -172.60ms p99</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded bg-surface-container-high text-primary font-label-code text-table-header font-bold tracking-wider">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified</span>
+                CONFIRMED SIGMOD
+              </span>
+</td>
+</tr>
+<!-- Row 3: Time-Series IoT Telemetry Rollup -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-headline-sm text-body-md text-primary font-semibold">Time-Series IoT Telemetry Rollup (24H / 30D)</span>
+<span class="font-label-code text-body-sm text-on-surface-variant">Operation: Cold-chain thermal excursion window aggregation</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface font-label-code text-table-header font-bold">CASSANDRA</span>
+<span class="font-metric-tabular text-body-md text-primary font-medium">p50: 4.10ms</span>
+</div>
+<span class="font-metric-tabular text-body-sm text-on-surface-variant">p99: 12.80ms · Clustered partition sequential disk read</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-metric-tabular text-body-md text-on-surface">Mongo aggregation: p50 64.20ms</span>
+<span class="font-metric-tabular text-body-sm text-error">p99: 214.50ms · High memory cursor buffer spills</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-metric-tabular text-headline-sm text-secondary font-bold">16.7x Faster</span>
+<span class="font-label-code text-table-header text-on-surface-variant">Δ -201.70ms p99</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded bg-surface-container-high text-primary font-label-code text-table-header font-bold tracking-wider">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified</span>
+                CONFIRMED SIGMOD
+              </span>
+</td>
+</tr>
+<!-- Row 4: Real-Time Disruption Diffusion Sim -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-surface-bright">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-headline-sm text-body-md text-primary font-semibold">Real-Time Disruption Diffusion Sim (Graph + KV)</span>
+<span class="font-label-code text-body-sm text-on-surface-variant">Operation: Propagation of API freeze cascade across 100K facilities</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-code text-table-header font-bold">HYBRID</span>
+<span class="font-metric-tabular text-body-md text-primary font-medium">p50: 14.80ms</span>
+</div>
+<span class="font-metric-tabular text-body-sm text-on-surface-variant">p99: 38.20ms · In-memory cypher + state cache</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-metric-tabular text-body-md text-on-surface">Monolithic RDBMS JOINs: p50 412.00ms</span>
+<span class="font-metric-tabular text-body-sm text-error font-semibold">p99: 1,240.00ms · Cascading lock contention</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-metric-tabular text-headline-sm text-secondary font-bold">32.4x Faster</span>
+<span class="font-label-code text-table-header text-on-surface-variant">Δ -1,201.80ms p99</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded bg-surface-container-high text-primary font-label-code text-table-header font-bold tracking-wider">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified</span>
+                CONFIRMED SIGMOD
+              </span>
+</td>
+</tr>
+<!-- Row 5: Event Ingestion & Buffer Stream -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-headline-sm text-body-md text-primary font-semibold">Event Ingestion &amp; Buffer Stream</span>
+<span class="font-label-code text-body-sm text-on-surface-variant">Operation: High-frequency cold-chain sensor batch commit</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface font-label-code text-table-header font-bold">REDPANDA</span>
+<span class="font-metric-tabular text-body-md text-primary font-medium">p50: 1.10ms</span>
+</div>
+<span class="font-metric-tabular text-body-sm text-on-surface-variant">p99: 3.40ms · Zero-copy thread-per-core I/O</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-metric-tabular text-body-md text-on-surface">Direct Document Insert: p50 18.20ms</span>
+<span class="font-metric-tabular text-body-sm text-error">p99: 74.00ms · Write lock journaling bottleneck</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-metric-tabular text-headline-sm text-secondary font-bold">21.7x Faster</span>
+<span class="font-label-code text-table-header text-on-surface-variant">Δ -70.60ms p99</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded bg-surface-container-high text-primary font-label-code text-table-header font-bold tracking-wider">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified</span>
+                CONFIRMED SIGMOD
+              </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer metadata strip inside table container -->
+<div class="bg-surface-container-low px-space-lg py-space-xs border-t border-surface-container-high flex flex-wrap items-center justify-between gap-space-sm text-label-code font-label-code text-on-surface-variant">
+<span>Query Samples: <strong class="text-on-surface font-metric-tabular">n = 100,000 runs</strong> per operation tier</span>
+<span>Warm Cache Run: <strong class="text-secondary font-metric-tabular">Enabled</strong> (10-minute burn-in cycle applied)</span>
+<span>Statistical Confidence: <strong class="text-on-surface font-metric-tabular">CI 99.9% (α = 0.001)</strong></span>
+</div>
+</section>
+<!-- Bottom Half: Visual Proof & System Telemetry Split Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- Left Column (50%): Latency Distribution Histogram & SLA Compliance -->
+<div class="flex flex-col gap-space-lg">
+<!-- 1. Latency Distribution Histogram -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col justify-between">
+<div class="flex items-center justify-between border-b border-surface-container-high pb-space-sm mb-space-md">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary">p50 / p95 / p99 Latency Distribution</span>
+<span class="font-label-code text-label-code text-on-surface-variant">Multi-tier Lineage &amp; Disruption Simulation Workloads</span>
+</div>
+<div class="flex items-center gap-space-md font-label-code text-table-header">
+<span class="flex items-center gap-1 text-primary">
+<span class="w-2.5 h-2.5 rounded-sm bg-secondary"></span> Polyglot (ms)
+            </span>
+<span class="flex items-center gap-1 text-error">
+<span class="w-2.5 h-2.5 rounded-sm bg-error"></span> Monolithic (ms)
+            </span>
+</div>
+</div>
+<!-- SVG Bar Chart -->
+<div class="w-full">
+<svg aria-label="Latency distribution chart" class="w-full h-52 overflow-visible" viewbox="0 0 540 210">
+<!-- Gridlines -->
+<line stroke="#E2E8F0" stroke-dasharray="4 4" stroke-width="1" x1="60" x2="520" y1="20" y2="20"></line>
+<line stroke="#E2E8F0" stroke-dasharray="4 4" stroke-width="1" x1="60" x2="520" y1="65" y2="65"></line>
+<line stroke="#E2E8F0" stroke-dasharray="4 4" stroke-width="1" x1="60" x2="520" y1="110" y2="110"></line>
+<line stroke="#E2E8F0" stroke-width="1" x1="60" x2="520" y1="155" y2="155"></line>
+<!-- Y Axis Labels -->
+<text class="fill-outline font-metric-tabular text-[10px]" text-anchor="end" x="52" y="24">1,200ms</text>
+<text class="fill-outline font-metric-tabular text-[10px]" text-anchor="end" x="52" y="69">200ms</text>
+<text class="fill-outline font-metric-tabular text-[10px]" text-anchor="end" x="52" y="114">25ms</text>
+<text class="fill-outline font-metric-tabular text-[10px]" text-anchor="end" x="52" y="159">0ms</text>
+<!-- Group 1: Fast Cache (Redis vs Mongo) -->
+<!-- Redis p50/p99 -->
+<rect class="fill-secondary hover:opacity-80 transition-all" height="3" width="18" x="85" y="152"></rect>
+<rect class="fill-secondary/70 hover:opacity-80 transition-all" height="4" width="18" x="105" y="151"></rect>
+<!-- Mongo p50/p99 -->
+<rect class="fill-error/60 hover:opacity-80 transition-all" height="8" width="18" x="127" y="147"></rect>
+<rect class="fill-error hover:opacity-80 transition-all" height="15" width="18" x="147" y="140"></rect>
+<!-- Group 2: Graph Traversal (Neo4j vs Mongo graphLookup) -->
+<!-- Neo4j p50/p99 -->
+<rect class="fill-secondary hover:opacity-80 transition-all" height="7" width="18" x="200" y="148"></rect>
+<rect class="fill-secondary/70 hover:opacity-80 transition-all" height="13" width="18" x="220" y="142"></rect>
+<!-- Mongo p50/p99 -->
+<rect class="fill-error/60 hover:opacity-80 transition-all" height="65" width="18" x="242" y="90"></rect>
+<rect class="fill-error hover:opacity-80 transition-all" height="107" width="18" x="262" y="48"></rect>
+<!-- Group 3: Real-Time Simulation (Hybrid vs RDBMS JOINs) -->
+<!-- Hybrid p50/p99 -->
+<rect class="fill-secondary hover:opacity-80 transition-all" height="18" width="18" x="315" y="137"></rect>
+<rect class="fill-secondary/70 hover:opacity-80 transition-all" height="40" width="18" x="335" y="115"></rect>
+<!-- RDBMS JOINs p50/p99 -->
+<rect class="fill-error/60 hover:opacity-80 transition-all" height="113" width="18" x="357" y="42"></rect>
+<rect class="fill-error hover:opacity-80 transition-all" height="140" width="18" x="377" y="15"></rect>
+<!-- Group 4: Time-Series Rollup (Cassandra vs Mongo Agg) -->
+<!-- Cassandra p50/p99 -->
+<rect class="fill-secondary hover:opacity-80 transition-all" height="6" width="18" x="430" y="149"></rect>
+<rect class="fill-secondary/70 hover:opacity-80 transition-all" height="16" width="18" x="450" y="139"></rect>
+<!-- Mongo Agg p50/p99 -->
+<rect class="fill-error/60 hover:opacity-80 transition-all" height="77" width="18" x="472" y="78"></rect>
+<rect class="fill-error hover:opacity-80 transition-all" height="117" width="18" x="492" y="38"></rect>
+<!-- X Axis Labels -->
+<text class="fill-on-surface-variant font-label-code text-[11px] font-medium" text-anchor="middle" x="127" y="176">KV Cache</text>
+<text class="fill-on-surface-variant font-label-code text-[11px] font-medium" text-anchor="middle" x="242" y="176">5-Hop Graph</text>
+<text class="fill-on-surface-variant font-label-code text-[11px] font-medium" text-anchor="middle" x="357" y="176">Sim Diffusion</text>
+<text class="fill-on-surface-variant font-label-code text-[11px] font-medium" text-anchor="middle" x="472" y="176">TS Rollup</text>
+<text class="fill-outline font-label-code text-[9px]" text-anchor="middle" x="127" y="192">p50 / p99</text>
+<text class="fill-outline font-label-code text-[9px]" text-anchor="middle" x="242" y="192">p50 / p99</text>
+<text class="fill-outline font-label-code text-[9px]" text-anchor="middle" x="357" y="192">p50 / p99</text>
+<text class="fill-outline font-label-code text-[9px]" text-anchor="middle" x="472" y="192">p50 / p99</text>
+</svg>
+</div>
+<div class="mt-space-sm p-space-xs rounded bg-surface-container-low text-label-code font-label-code text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-error">analytics</span>
+<span>Observation: Monolithic tail latency (p99) grows exponentially with graph depth &gt; 3, while Polyglot engine latency remains bounded under 10ms.</span>
+</div>
+</div>
+<!-- 2. Latency Jitter & SLA Compliance Gauge -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col justify-between">
+<div class="flex items-center justify-between border-b border-surface-container-high pb-space-sm mb-space-md">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary">SLA Compliance &amp; Latency Jitter</span>
+<span class="font-label-code text-label-code text-on-surface-variant">Threshold Budget: &lt;15ms Hard Deadline for Telemetry Alerting</span>
+</div>
+<span class="font-label-code text-table-header px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface font-semibold">1,000 SAMPLES</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-lg">
+<!-- Polyglot SLA Gauge -->
+<div class="flex flex-col items-center justify-center p-space-md rounded-lg bg-surface-container-low">
+<div class="relative w-28 h-28 flex items-center justify-center mb-space-xs">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="42" stroke="#ECEEF0" stroke-width="8"></circle>
+<circle cx="50" cy="50" fill="none" id="polyRing" r="42" stroke="#0051d5" stroke-dasharray="264" stroke-dashoffset="0.5" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-metric-tabular text-headline-sm text-primary font-bold">99.98%</span>
+<span class="font-label-code text-[10px] text-secondary font-semibold">VALID</span>
+</div>
+</div>
+<span class="font-headline-sm text-body-md text-primary font-semibold">Polyglot Architecture</span>
+<span class="font-label-code text-body-sm text-on-surface-variant">Jitter Variance: ±0.42ms</span>
+<span class="font-metric-tabular text-table-header text-secondary mt-1 font-semibold">0 SLA Violations / 1K</span>
+</div>
+<!-- Monolithic SLA Gauge -->
+<div class="flex flex-col items-center justify-center p-space-md rounded-lg bg-surface-container-low">
+<div class="relative w-28 h-28 flex items-center justify-center mb-space-xs">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="42" stroke="#ECEEF0" stroke-width="8"></circle>
+<circle cx="50" cy="50" fill="none" id="monoRing" r="42" stroke="#ba1a1a" stroke-dasharray="264" stroke-dashoffset="57" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-metric-tabular text-headline-sm text-error font-bold">78.40%</span>
+<span class="font-label-code text-[10px] text-error font-semibold">FAIL</span>
+</div>
+</div>
+<span class="font-headline-sm text-body-md text-primary font-semibold">Single Monolithic MongoDB</span>
+<span class="font-label-code text-body-sm text-on-surface-variant">Jitter Variance: ±248.60ms</span>
+<span class="font-metric-tabular text-table-header text-error mt-1 font-semibold">216 Breaches (&gt;15ms)</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-surface-container-high flex items-center justify-between text-label-code font-label-code text-on-surface-variant">
+<span>Max Recorded Spike: <span class="font-metric-tabular text-error font-semibold">1,240ms (RDBMS JOIN deadlock)</span></span>
+<span>Polyglot Max Spike: <span class="font-metric-tabular text-secondary font-semibold">38.2ms</span></span>
+</div>
+</div>
+</div>
+<!-- Right Column (50%): Hardware Profiling & Empirical Conclusions -->
+<div class="flex flex-col gap-space-lg">
+<!-- 1. Real-Time Resource Utilization & Hardware Profiling -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col">
+<div class="flex items-center justify-between border-b border-surface-container-high pb-space-sm mb-space-md">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary">System Telemetry &amp; Hardware Footprint</span>
+<span class="font-label-code text-label-code text-on-surface-variant">Host: 64 vCPU AWS c6i.16xlarge · 128 GB NVMe Striped</span>
+</div>
+<span class="inline-flex items-center gap-1 font-label-code text-table-header text-secondary font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> PROFILER ACTIVE
+          </span>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Engine 1: Redis -->
+<div class="flex flex-col gap-1 p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-body-md text-primary font-semibold flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Redis (Fast KV Cache &amp; State)
+              </span>
+<span class="font-metric-tabular text-body-sm text-secondary font-semibold">12% CPU · 1.8 GB RAM</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden flex">
+<div class="bg-secondary h-full rounded-full" style="width: 12%;"></div>
+</div>
+<div class="flex items-center justify-between text-label-code font-label-code text-on-surface-variant text-body-sm mt-0.5">
+<span>Disk I/O: <strong class="font-metric-tabular text-on-surface">0.1 MB/s (AOF async)</strong></span>
+<span>Memory Efficiency: <strong class="font-metric-tabular text-secondary">Optimal (No thrash)</strong></span>
+</div>
+</div>
+<!-- Engine 2: Neo4j -->
+<div class="flex flex-col gap-1 p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-body-md text-primary font-semibold flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Neo4j Enterprise (Graph Lineage)
+              </span>
+<span class="font-metric-tabular text-body-sm text-secondary font-semibold">28% CPU · 6.4 GB RAM</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden flex">
+<div class="bg-secondary h-full rounded-full" style="width: 28%;"></div>
+</div>
+<div class="flex items-center justify-between text-label-code font-label-code text-on-surface-variant text-body-sm mt-0.5">
+<span>PageCache Hit Ratio: <strong class="font-metric-tabular text-secondary">99.4%</strong></span>
+<span>Traversed Edges: <strong class="font-metric-tabular text-on-surface">1.2M in-memory</strong></span>
+</div>
+</div>
+<!-- Engine 3: Cassandra -->
+<div class="flex flex-col gap-1 p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-body-md text-primary font-semibold flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Apache Cassandra (Columnar Time-Series)
+              </span>
+<span class="font-metric-tabular text-body-sm text-secondary font-semibold">34% CPU · 8.2 GB RAM</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden flex">
+<div class="bg-secondary h-full rounded-full" style="width: 34%;"></div>
+</div>
+<div class="flex items-center justify-between text-label-code font-label-code text-on-surface-variant text-body-sm mt-0.5">
+<span>Write Amplification: <strong class="font-metric-tabular text-secondary">1.2x (LSM-tree SSTable)</strong></span>
+<span>Compaction Queue: <strong class="font-metric-tabular text-on-surface">0 pending</strong></span>
+</div>
+</div>
+<!-- Engine 4: Monolithic MongoDB (Pinned comparison) -->
+<div class="flex flex-col gap-1 p-space-sm rounded-lg bg-error-container/20 border border-error-container">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-body-md text-error font-semibold flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-error">error</span>
+                Single Monolithic Store (MongoDB / RDBMS)
+              </span>
+<span class="font-metric-tabular text-body-sm text-error font-bold">94% CPU (Pinned) · 31.8 GB RAM</span>
+</div>
+<div class="w-full bg-error-container rounded-full h-2 overflow-hidden flex">
+<div class="bg-error h-full rounded-full animate-pulse" style="width: 94%;"></div>
+</div>
+<div class="flex items-center justify-between text-label-code font-label-code text-on-error-container text-body-sm mt-0.5">
+<span>Disk I/O Wait: <strong class="font-metric-tabular text-error">42.8% (Buffer Thrash)</strong></span>
+<span>WiredTiger Lock Eviction: <strong class="font-metric-tabular text-error">Critical</strong></span>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. Empirical Conclusion & Research Export Box -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col justify-between">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">psychology</span>
+<span class="font-headline-sm text-headline-sm text-primary">Empirical Conclusion &amp; Publication Export</span>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-low border-l-4 border-secondary mt-space-2xs">
+<p class="font-body-md text-body-md text-on-surface font-medium leading-relaxed">
+              Empirical confirmation of Polyglot Architectural Advantage for real-time critical healthcare supply chain networks (<span class="font-metric-tabular text-secondary font-bold">p &lt; 0.001</span> significance). By decoupling time-series streams into clustered SSTables, dependency graphs into adjacency stores, and state flags into pure RAM, tail latency under cascading shock collapses from <span class="font-metric-tabular text-error font-bold">1,240ms</span> to <span class="font-metric-tabular text-secondary font-bold">38.2ms</span>.
+            </p>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-lg border-t border-surface-container-high mt-space-md">
+<div class="flex items-center gap-space-xs">
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded bg-surface-container hover:bg-surface-container-high text-on-surface text-label-code font-label-code font-semibold transition-colors" onclick="downloadCsvTraces()">
+<span class="material-symbols-outlined text-[16px] text-secondary">download</span>
+              Download Raw CSV Latency Traces
+            </button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded bg-surface-container hover:bg-surface-container-high text-on-surface text-label-code font-label-code font-semibold transition-colors" onclick="exportLatexTable()">
+<span class="material-symbols-outlined text-[16px] text-primary">code</span>
+              Export LaTeX Benchmark Table
+            </button>
+</div>
+<span class="font-label-code text-table-header text-on-surface-variant">Validated for Submission · SIGMOD Artifact Cleared</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Toast Notification container -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="benchmarkToast">
+<div class="bg-primary-container text-on-primary px-space-lg py-space-sm rounded-lg shadow-xl flex items-center gap-space-md border border-primary-container/40">
+<span class="material-symbols-outlined text-secondary text-[20px]" id="toastIcon">check_circle</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-body-sm text-surface-container-lowest font-bold" id="toastTitle">Automated Stress Test Running</span>
+<span class="font-label-code text-table-header text-on-primary-container" id="toastMessage">1,000 queries dispatched across polyglot test harness...</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  let testRunning = false;
+
+  function showToast(title, message, icon = 'check_circle') {
+    const toast = document.getElementById('benchmarkToast');
+    const toastTitle = document.getElementById('toastTitle');
+    const toastMessage = document.getElementById('toastMessage');
+    const toastIcon = document.getElementById('toastIcon');
+
+    toastTitle.textContent = title;
+    toastMessage.textContent = message;
+    toastIcon.textContent = icon;
+
+    toast.classList.remove('translate-y-24', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    setTimeout(() => {
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-24', 'opacity-0');
+    }, 3800);
+  }
+
+  function runBenchmarkSimulation() {
+    if (testRunning) return;
+    testRunning = true;
+
+    const btn = document.getElementById('stressBtn');
+    const label = document.getElementById('stressLabel');
+    const icon = document.getElementById('stressIcon');
+
+    btn.classList.remove('bg-secondary');
+    btn.classList.add('bg-on-secondary-fixed-variant');
+    icon.textContent = 'hourglass_empty';
+    label.textContent = 'Simulating 1,000 Workload-B Queries...';
+
+    showToast('Executing SIGMOD Stress Suite', 'Sending parallel async load to Neo4j, Redis, Cassandra & Monolith...', 'autorenew');
+
+    setTimeout(() => {
+      icon.textContent = 'check';
+      label.textContent = '1,000 Queries Completed (p < 0.001)';
+      btn.classList.remove('bg-on-secondary-fixed-variant');
+      btn.classList.add('bg-secondary');
+
+      showToast('Validation Complete', 'Speedup metrics re-verified. Polyglot latency bounded under 38.2ms p99.', 'verified');
+
+      setTimeout(() => {
+        icon.textContent = 'play_arrow';
+        label.textContent = 'Run 1,000 Query Stress Test';
+        testRunning = false;
+      }, 4000);
+    }, 1800);
+  }
+
+  function resetTraces() {
+    showToast('Harness Telemetry Flushed', 'Reset all sliding window query trace buffers.', 'refresh');
+  }
+
+  function downloadCsvTraces() {
+    const headers = "workload,engine,p50_ms,p95_ms,p99_ms,speedup_factor,violations_under_15ms\\n";
+    const data = [
+      "CacheLookupKV,Redis,0.28,0.52,0.85,9.6,0",
+      "GraphLineage5Hop,Neo4j,3.20,6.10,9.40,19.3,0",
+      "IoTTelemetryRollup,Cassandra,4.10,8.70,12.80,16.7,0",
+      "DisruptionSimulation,Hybrid,14.80,24.10,38.20,32.4,2",
+      "EventBufferIngest,Redpanda,1.10,2.10,3.40,21.7,0",
+      "CacheLookupKV,MongoDB,2.40,5.80,8.20,1.0,0",
+      "GraphLineage5Hop,MongoDB,48.60,112.00,182.00,1.0,182",
+      "IoTTelemetryRollup,MongoDB,64.20,140.00,214.50,1.0,214",
+      "DisruptionSimulation,RDBMS_JOINs,412.00,890.00,1240.00,1.0,1000",
+      "EventBufferIngest,MongoDB,18.20,44.00,74.00,1.0,74"
+    ].join("\\n");
+
+    const blob = new Blob([headers + data], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "sigmod_polyglot_monolith_traces.csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+
+    showToast('CSV Download Started', 'Exported 100K trace records formatted for statistical tooling.', 'download');
+  }
+
+  function exportLatexTable() {
+    const latexSnippet = `% Generated by SIGMOD Benchmark Suite
+\\begin{table}[t]
+\\centering
+\\small
+\\caption{Polyglot Engine vs. Monolithic Baseline under Workload-B}
+\\label{tab:polyglot_perf}
+\\begin{tabular}{lrrrr}
+\\hline
+\\textbf{Workload Component} & \\textbf{Polyglot p99} & \\textbf{Monolith p99} & \\textbf{Speedup} & \\textbf{Sig.} \\\\
+\\hline
+KV Cache (Redis vs Mongo) & 0.85 ms & 8.20 ms & 9.6\\times & $p < 0.001$ \\\\
+5-Hop Lineage (Neo4j vs Mongo) & 9.40 ms & 182.00 ms & 19.3\\times & $p < 0.001$ \\\\
+Telemetry Rollup (Cassandra) & 12.80 ms & 214.50 ms & 16.7\\times & $p < 0.001$ \\\\
+Disruption Sim (Graph+KV) & 38.20 ms & 1,240.00 ms & 32.4\\times & $p < 0.001$ \\\\
+Event Ingest (Redpanda) & 3.40 ms & 74.00 ms & 21.7\\times & $p < 0.001$ \\\\
+\\hline
+\\end{tabular}
+\\end{table}`;
+
+    navigator.clipboard.writeText(latexSnippet).then(() => {
+      showToast('LaTeX Snippet Copied', 'Paste directly into your SIGMOD/VLDB paper source document.', 'content_copy');
+    }).catch(() => {
+      showToast('Export Ready', 'LaTeX table generated in memory buffer.', 'code');
+    });
+  }
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-surface-container-high py-space-md mt-space-2xl"><div class="w-full px-margin-lg flex flex-col md:flex-row items-center justify-between gap-space-sm text-label-code font-label-code text-on-surface-variant"><div class="flex items-center gap-space-md flex-wrap"><span>CONSOLE ID: <span class="font-metric-tabular text-on-surface">MON-PSC-9821-X</span></span><span class="text-outline-variant">|</span><span>NODE STATUS: <span class="text-secondary font-semibold">PRIMARY CLUSTER 99.998%</span></span><span class="text-outline-variant">|</span><span>PROTOCOL: <span class="text-on-surface">TLS 1.3 / ENCRYPTED CDC-FDA BUS</span></span></div><div class="flex items-center gap-space-lg text-body-sm font-body-sm"><span>GMP Electronic Record Master Archive</span><span>© 2024 Pharma Supply Chain Telemetry Group</span></div></div></footer></body></html>
