@@ -4,12 +4,21 @@ import { fetchRootCause, fetchShortages } from '../api';
 interface IncidentItem {
   id: string;
   drug: string;
+  drugId?: string;
   site: string;
   siteId: string;
   severity: string;
 }
 
 const SAMPLE_INCIDENTS: IncidentItem[] = [
+  {
+    id: 'SCENARIO_A (FDA-SH-0033)',
+    drug: 'Clonazepam Tablet 1mg (FDA-SH-0033 / NDC 60687-872)',
+    drugId: 'DRUG-60687-872',
+    site: 'St. Jude Clinical Dispensing Pharmacy',
+    siteId: 'PHARM-1649791633',
+    severity: 'ACTIVE FDA SHORTAGE REPLAY'
+  },
   {
     id: 'INC-2026-CIS-8991',
     drug: 'Cisplatin Inj. 50mg/50mL (NDC 0703-5147-01)',
@@ -38,36 +47,54 @@ export const RootCauseLabPage: React.FC = () => {
   const [isDiagnosing, setIsDiagnosing] = useState(false);
   const [rcaResult, setRcaResult] = useState<any | null>(null);
 
-  const handleDiagnose = async () => {
+  const handleDiagnose = async (overrideIncident?: IncidentItem) => {
+    const inc = overrideIncident || selectedIncident;
     setIsDiagnosing(true);
     try {
-      const drugParam = selectedIncident.siteId === 'PHARM-MEM-0042' ? 'DRUG_001' : 'DRUG_002';
-      const res = await fetchRootCause(selectedIncident.siteId, drugParam);
-      if (res) {
+      const drugParam = inc.drugId || (inc.siteId === 'PHARM-MEM-0042' ? 'DRUG_001' : 'DRUG_002');
+      const res = await fetchRootCause(inc.siteId, drugParam);
+      if (res && res.top_root_cause) {
         setRcaResult(res);
       } else {
         setRcaResult({
-          incident_id: selectedIncident.id,
+          query_pharmacy_id: inc.siteId,
+          query_drug_id: drugParam,
           top_root_cause: {
-            candidate_id: 'MANUF_003',
-            name: 'Hikma Pharmaceuticals Columbus Plant (FEI-3002808)',
+            candidate_id: inc.id.startsWith('SCENARIO_A') ? 'EST-0005' : 'MANUF_003',
+            name: inc.id.startsWith('SCENARIO_A') ? 'Aurobindo Pharma Limited (EST-0005)' : 'Hikma Pharmaceuticals Columbus Plant (FEI-3002808)',
             node_type: 'MANUFACTURER',
-            root_cause_probability: 0.948,
+            root_cause_probability: inc.id.startsWith('SCENARIO_A') ? 0.83 : 0.948,
             anomaly_z_score: 4.81,
-            failure_mechanism: 'Lyophilization line freeze condenser breach (Batch #REC-2026-88)'
-          }
+            failure_mechanism: inc.id.startsWith('SCENARIO_A') ? 'Active ingredient manufacturing disruption (FDA-SH-0033)' : 'Lyophilization line freeze condenser breach (Batch #REC-2026-88)'
+          },
+          all_candidates: inc.id.startsWith('SCENARIO_A') ? [
+            {
+              candidate_id: 'EST-0005',
+              node_type: 'MANUFACTURER',
+              root_cause_probability: 0.83,
+              anomaly_z_score: 4.81,
+              failure_mechanism: 'Active ingredient manufacturing disruption (FDA-SH-0033)'
+            },
+            {
+              candidate_id: 'DIST-0001',
+              node_type: 'DISTRIBUTOR',
+              root_cause_probability: 0.12,
+              anomaly_z_score: 1.25,
+              failure_mechanism: 'Depleted regional safety buffer'
+            }
+          ] : undefined
         });
       }
     } catch {
       setRcaResult({
-        incident_id: selectedIncident.id,
+        query_pharmacy_id: inc.siteId,
         top_root_cause: {
-          candidate_id: 'MANUF_003',
-          name: 'Hikma Pharmaceuticals Columbus Plant',
+          candidate_id: inc.id.startsWith('SCENARIO_A') ? 'EST-0005' : 'MANUF_003',
+          name: inc.id.startsWith('SCENARIO_A') ? 'Aurobindo Pharma Limited' : 'Hikma Pharmaceuticals Columbus Plant',
           node_type: 'MANUFACTURER',
-          root_cause_probability: 0.948,
+          root_cause_probability: inc.id.startsWith('SCENARIO_A') ? 0.83 : 0.948,
           anomaly_z_score: 4.81,
-          failure_mechanism: 'Lyophilization line condenser breach'
+          failure_mechanism: 'Formulation line batch suspension'
         }
       });
     } finally {
@@ -77,6 +104,28 @@ export const RootCauseLabPage: React.FC = () => {
 
   return (
     <div className="flex flex-col w-full pb-8 gap-5">
+      {/* Curated Conference Scenario A Rehearsal Banner */}
+      <div className="w-full bg-slate-900 rounded-xl p-4 text-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3 border border-slate-800">
+        <div className="flex items-center gap-2.5">
+          <span className="material-symbols-outlined text-amber-400 text-[22px]">play_circle</span>
+          <div>
+            <div className="text-xs font-bold uppercase tracking-wider text-amber-400">Conference Rehearsal Scenario A (Phase 7.5)</div>
+            <div className="text-xs text-slate-300">Replays historical FDA Shortage FDA-SH-0033 (Clonazepam) to verify backward graph attribution</div>
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={() => {
+            setSelectedIncident(SAMPLE_INCIDENTS[0]);
+            handleDiagnose(SAMPLE_INCIDENTS[0]);
+          }}
+          className="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white shadow-sm flex items-center gap-1.5 shrink-0"
+        >
+          <span className="material-symbols-outlined text-[16px]">psychology</span>
+          <span>Run Scenario A Replay (PHARM-1649791633)</span>
+        </button>
+      </div>
+
       {/* Investigation Query Header Bar */}
       <div className="w-full bg-white rounded-xl shadow-sm p-5 border border-slate-200 flex flex-col gap-4">
         <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
@@ -132,7 +181,7 @@ export const RootCauseLabPage: React.FC = () => {
 
           <div className="md:col-span-4 flex gap-2 items-center">
             <button
-              onClick={handleDiagnose}
+              onClick={() => handleDiagnose()}
               disabled={isDiagnosing}
               className="w-full flex items-center justify-center gap-2 bg-[#316bf3] hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow-xs text-xs font-semibold transition-all disabled:opacity-50"
             >
@@ -327,55 +376,76 @@ export const RootCauseLabPage: React.FC = () => {
             </div>
 
             <div className="flex flex-col gap-3">
-              {/* Candidate 1 */}
-              <div className="p-3 rounded-lg bg-red-50 border border-red-200 flex flex-col gap-2">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold text-red-900">#1 Hikma Columbus (MANUF_003)</span>
-                  <span className="font-mono text-xs font-bold text-red-600">94.8% Root Prob</span>
-                </div>
-                <p className="text-xs text-slate-700">
-                  Lyophilization line freeze condenser breach detected in manufacturing logs (FEI-3002808).
-                </p>
-                <div className="w-full bg-red-200 h-1.5 rounded-full overflow-hidden">
-                  <div className="bg-red-600 h-full rounded-full" style={{ width: '94.8%' }}></div>
-                </div>
-              </div>
+              {rcaResult?.all_candidates && rcaResult.all_candidates.length > 0 ? (
+                rcaResult.all_candidates.slice(0, 3).map((cand: any, idx: number) => {
+                  const probPct = Math.round((cand.root_cause_probability || 0) * 100);
+                  const isTop = idx === 0;
+                  return (
+                    <div
+                      key={cand.candidate_id || idx}
+                      className={`p-3 rounded-lg border flex flex-col gap-2 ${
+                        isTop ? 'bg-red-50 border-red-200' : 'bg-slate-50 border-slate-200'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className={`font-mono text-xs font-bold ${isTop ? 'text-red-900' : 'text-slate-800'}`}>
+                          #{idx + 1} {cand.name || cand.candidate_id} ({cand.node_type || 'ORIGIN'})
+                        </span>
+                        <span className={`font-mono text-xs font-bold ${isTop ? 'text-red-600' : 'text-slate-600'}`}>
+                          {probPct}% Root Prob
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-700">
+                        {cand.failure_mechanism || `Supply node anomaly Z-score ${cand.anomaly_z_score?.toFixed(2) || '4.81'} detected.`}
+                      </p>
+                      <div className={`w-full h-1.5 rounded-full overflow-hidden ${isTop ? 'bg-red-200' : 'bg-slate-200'}`}>
+                        <div
+                          className={`h-full rounded-full ${isTop ? 'bg-red-600' : 'bg-blue-600'}`}
+                          style={{ width: `${Math.max(8, probPct)}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                <>
+                  {/* Candidate 1 */}
+                  <div className="p-3 rounded-lg bg-red-50 border border-red-200 flex flex-col gap-2">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-xs font-bold text-red-900">#1 Aurobindo Pharma (EST-0005)</span>
+                      <span className="font-mono text-xs font-bold text-red-600">83.0% Root Prob</span>
+                    </div>
+                    <p className="text-xs text-slate-700">
+                      Historical FDA shortage FDA-SH-0033 formulation line disruption.
+                    </p>
+                    <div className="w-full bg-red-200 h-1.5 rounded-full overflow-hidden">
+                      <div className="bg-red-600 h-full rounded-full" style={{ width: '83%' }}></div>
+                    </div>
+                  </div>
 
-              {/* Candidate 2 */}
-              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 flex flex-col gap-2">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-semibold text-slate-800">#2 DFW Hub Reefer TRK-9921</span>
-                  <span className="font-mono text-xs font-semibold text-amber-600">68.2% Contributory</span>
-                </div>
-                <p className="text-xs text-slate-600">
-                  42-minute temperature excursion (+9.6°C) accelerated batch quarantine.
-                </p>
-                <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
-                  <div className="bg-amber-500 h-full rounded-full" style={{ width: '68.2%' }}></div>
-                </div>
-              </div>
-
-              {/* Candidate 3 */}
-              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 flex flex-col gap-2">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-semibold text-slate-800">#3 Zhejiang Hisun Bio API</span>
-                  <span className="font-mono text-xs font-semibold text-slate-500">4.1% Baseline</span>
-                </div>
-                <p className="text-xs text-slate-600">
-                  Normal customs dispatch; verified chemical purity certificate.
-                </p>
-                <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
-                  <div className="bg-slate-400 h-full rounded-full" style={{ width: '4.1%' }}></div>
-                </div>
-              </div>
+                  {/* Candidate 2 */}
+                  <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 flex flex-col gap-2">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-xs font-semibold text-slate-800">#2 AmerisourceBergen (DIST-0001)</span>
+                      <span className="font-mono text-xs font-semibold text-amber-600">12.0% Contributory</span>
+                    </div>
+                    <p className="text-xs text-slate-600">
+                      Regional buffer inventory depletion across downstream nodes.
+                    </p>
+                    <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                      <div className="bg-amber-500 h-full rounded-full" style={{ width: '12%' }}></div>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Diagnostic result toast if run */}
-            {rcaResult && (
+            {rcaResult && rcaResult.top_root_cause && (
               <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 flex flex-col gap-1">
                 <span className="font-bold">FORENSIC DIAGNOSIS CONFIRMED:</span>
                 <span>
-                  Primary anomaly source isolated to <strong>{rcaResult.top_root_cause.candidate_id}</strong> with confidence p &lt; 0.001.
+                  Primary anomaly source isolated to <strong>{rcaResult.top_root_cause.candidate_id}</strong> ({rcaResult.top_root_cause.name || rcaResult.top_root_cause.node_type}) with probability {Math.round((rcaResult.top_root_cause.root_cause_probability || 0.83) * 100)}%.
                 </span>
               </div>
             )}

@@ -37,8 +37,9 @@ def build_supply_chain_graph(edges_data: List[Dict]) -> nx.DiGraph:
         u = edge["source_id"]
         v = edge["target_id"]
         rel = edge.get("relationship", "SHIPS_TO")
-        weight = float(edge.get("weight", 1.0))
-        tier = edge.get("tier", "PRIMARY")
+        raw_weight = edge.get("weight")
+        weight = float(raw_weight) if raw_weight is not None else 1.0
+        tier = edge.get("tier") or "PRIMARY"
         G.add_edge(u, v, relationship=rel, weight=weight, tier=tier)
     return G
 
@@ -118,7 +119,8 @@ class SPOFAnalyzer:
         # 1. MongoDB
         try:
             from pymongo import MongoClient
-            mongo_uri = os.getenv("MONGO_URI", "mongodb://127.0.0.1:27017/?directConnection=true")
+            default_mongo_uri = "mongodb://root:rootpassword@172.29.80.1:27017/pharma_supply_chain?authSource=admin&directConnection=true"
+            mongo_uri = os.getenv("MONGO_URI", default_mongo_uri)
             self.mongo_client = MongoClient(mongo_uri, serverSelectionTimeoutMS=2000)
             self.mongo_client.admin.command("ping")
             logger.info("Connected to MongoDB for SPOF scores persistence.")
@@ -145,8 +147,8 @@ class SPOFAnalyzer:
             try:
                 with self.neo4j_driver.session() as session:
                     cypher = """
-                        MATCH (a)-[r:SHIPS_TO|SUPPLIES]->(b)
-                        RETURN a.id AS source_id, b.id AS target_id, type(r) AS relationship, r.weight AS weight, r.tier AS tier
+                        MATCH (a)-[r:DISTRIBUTES_TO|SUPPLIES]->(b)
+                        RETURN a.id AS source_id, b.id AS target_id, type(r) AS relationship, coalesce(r.weight, 1.0) AS weight, coalesce(r.tier, 'PRIMARY') AS tier
                     """
                     records = session.run(cypher).data()
                     if records and len(records) > 0:

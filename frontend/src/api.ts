@@ -185,4 +185,26 @@ export async function runLiveBenchmarkSample(drugId: string = 'DRUG_001'): Promi
   };
 }
 
+export async function fetchDemoScenarios() {
+  try {
+    const res = await fetch(`${API_BASE}/scenarios`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (err) {
+    console.warn('API /scenarios fetch failed:', err);
+    return null;
+  }
+}
+
+export async function fetchDemoScenario(scenarioId: string) {
+  try {
+    const res = await fetch(`${API_BASE}/scenarios/${scenarioId}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (err) {
+    console.warn(`API /scenarios/${scenarioId} fetch failed:`, err);
+    return null;
+  }
+}
+
 

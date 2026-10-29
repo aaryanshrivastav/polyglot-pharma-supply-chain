@@ -31,8 +31,11 @@ class DatabaseClients:
         self.redis_host = os.getenv("REDIS_HOST", "127.0.0.1")
         self.redis_port = int(os.getenv("REDIS_PORT", "6379"))
 
-        self.mongo_uri = os.getenv("MONGO_URI", "mongodb://127.0.0.1:27017/?directConnection=true")
-        self.mongo_db_name = os.getenv("MONGO_DB", "pharma_supply_chain")
+        self.mongo_host = os.getenv("MONGO_HOST", "172.29.80.1")
+        self.mongo_port = int(os.getenv("MONGO_PORT", "27017"))
+        default_mongo_uri = f"mongodb://root:rootpassword@{self.mongo_host}:{self.mongo_port}/pharma_supply_chain?authSource=admin&directConnection=true"
+        self.mongo_uri = os.getenv("MONGO_URI", default_mongo_uri)
+        self.mongo_db_name = os.getenv("MONGO_DB_NAME", os.getenv("MONGO_DB", "pharma_supply_chain"))
 
         self.cass_host = os.getenv("CASSANDRA_HOST", "127.0.0.1")
         self.cass_port = int(os.getenv("CASSANDRA_PORT", "9042"))
@@ -75,7 +78,7 @@ class DatabaseClients:
             self.redis = None
 
         # 2. MongoDB
-        if self._is_port_open("127.0.0.1", 27017):
+        if self._is_port_open(self.mongo_host, self.mongo_port):
             try:
                 from pymongo import MongoClient
                 self.mongo = MongoClient(self.mongo_uri, serverSelectionTimeoutMS=1000)
@@ -93,13 +96,13 @@ class DatabaseClients:
             try:
                 from cassandra.cluster import Cluster, ExecutionProfile, EXEC_PROFILE_DEFAULT
                 from cassandra.policies import RoundRobinPolicy
-                profile = ExecutionProfile(load_balancing_policy=RoundRobinPolicy(), request_timeout=3.0)
+                profile = ExecutionProfile(load_balancing_policy=RoundRobinPolicy(), request_timeout=10.0)
                 self.cass_cluster = Cluster(
                     [self.cass_host],
                     port=self.cass_port,
                     execution_profiles={EXEC_PROFILE_DEFAULT: profile},
                     protocol_version=5,
-                    connect_timeout=1.0
+                    connect_timeout=5.0
                 )
                 self.cassandra = self.cass_cluster.connect(self.cass_keyspace)
                 logger.info(f"Connected to Cassandra at {self.cass_host}:{self.cass_port} [{self.cass_keyspace}]")

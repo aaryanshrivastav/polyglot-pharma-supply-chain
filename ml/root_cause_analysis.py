@@ -62,6 +62,21 @@ def load_upstream_topology_map() -> Tuple[Dict[str, List[str]], Dict[str, List[s
     return pharm_to_dist, dist_to_mfg
 
 
+def load_drug_to_mfg_map() -> Dict[str, List[str]]:
+    """Loads mapping of drug_id to producing manufacturer_ids from PRODUCES edges."""
+    drug_to_mfg = {}
+    edges_file = STAGED_DIR / "topology_edges.json"
+    if edges_file.exists():
+        with open(edges_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        edges_obj = data.get("edges", {}) if isinstance(data, dict) else {}
+        for e in edges_obj.get("PRODUCES", []):
+            m_id = e["source_id"]
+            d_id = e["target_id"]
+            drug_to_mfg.setdefault(d_id, []).append(m_id)
+    return drug_to_mfg
+
+
 def load_upstream_anomalies() -> Dict[str, float]:
     """
     Loads recent anomaly signals for upstream nodes from anomaly detection output or mock.
@@ -91,7 +106,8 @@ def rank_root_causes(
     drug_id: str,
     pharm_to_dist: Dict[str, List[str]],
     dist_to_mfg: Dict[str, List[str]],
-    anomaly_map: Optional[Dict[str, float]] = None
+    anomaly_map: Optional[Dict[str, float]] = None,
+    drug_to_mfg: Optional[Dict[str, List[str]]] = None
 ) -> List[Dict]:
     """
     Traverses backward from pharmacy_id, scores upstream distributors and manufacturers,
@@ -99,6 +115,11 @@ def rank_root_causes(
     """
     if anomaly_map is None:
         anomaly_map = {}
+    if drug_to_mfg is None:
+        drug_to_mfg = load_drug_to_mfg_map()
+
+    producing_mfgs = set(drug_to_mfg.get(drug_id, []))
+    drug_anomaly = anomaly_map.get(drug_id, 0.0)
 
     candidates = []
     # 1-hop upstream: Distributors
@@ -111,7 +132,10 @@ def rank_root_causes(
         # Proximity score for direct 1-hop distributor
         prox_score = 0.85
         # Check if distributor has correlated anomaly or high SPOF centrality
-        anom_score = anomaly_map.get(dist_id, 0.60 if "0014" in dist_id or "0011" in dist_id else 0.25)
+        supplied_mfgs = dist_to_mfg.get(dist_id, [])
+        connects_to_producer = any(m in producing_mfgs for m in supplied_mfgs)
+        default_dist_anom = 0.45 if (connects_to_producer and drug_anomaly > 0) else 0.20
+        anom_score = anomaly_map.get(dist_id, default_dist_anom)
         # Combined root cause score
         root_cause_score = round(0.40 * prox_score + 0.60 * anom_score, 4)
 
@@ -127,10 +151,11 @@ def rank_root_causes(
         })
 
         # 2-hop upstream: Manufacturers supplying this distributor
-        mfgs = dist_to_mfg.get(dist_id, [])
-        for mfg_id in set(mfgs[:5]):  # Top supplying manufacturers
+        for mfg_id in set(supplied_mfgs[:5]):  # Top supplying manufacturers
             prox_mfg = 0.65  # 2-hop distance decay
-            anom_mfg = anomaly_map.get(mfg_id, 0.70 if "EST-0001" in mfg_id or "EST-0002" in mfg_id else 0.20)
+            is_producer = (mfg_id in producing_mfgs)
+            default_mfg_anom = max(drug_anomaly, 0.75) if (is_producer and drug_anomaly > 0) else (0.50 if is_producer else 0.15)
+            anom_mfg = anomaly_map.get(mfg_id, default_mfg_anom)
             rc_mfg = round(0.40 * prox_mfg + 0.60 * anom_mfg, 4)
 
             candidates.append({
@@ -159,6 +184,7 @@ class RootCauseEngine:
     def __init__(self, dry_run: bool = False):
         self.dry_run = dry_run
         self.pharm_to_dist, self.dist_to_mfg = load_upstream_topology_map()
+        self.drug_to_mfg = load_drug_to_mfg_map()
         self.anomaly_map = load_upstream_anomalies()
         self.mongo_client = None
 
@@ -168,9 +194,13 @@ class RootCauseEngine:
     def _init_mongo(self):
         try:
             from pymongo import MongoClient
-            mongo_uri = os.getenv("MONGO_URI", "mongodb://127.0.0.1:27017/?directConnection=true")
+            default_mongo_uri = "mongodb://root:rootpassword@172.29.80.1:27017/pharma_supply_chain?authSource=admin&directConnection=true"
+            mongo_uri = os.getenv("MONGO_URI", default_mongo_uri)
             self.mongo_client = MongoClient(mongo_uri, serverSelectionTimeoutMS=2000)
             self.mongo_client.admin.command("ping")
+        except Exception as e:
+            logger.debug(f"MongoDB offline for root cause persistence: {e}")
+            self.mongo_client = None
         except Exception as e:
             logger.debug(f"MongoDB offline for root cause persistence: {e}")
             self.mongo_client = None

@@ -14,60 +14,62 @@ interface VulnerabilityNode {
 
 const VULNERABILITY_MATRIX: VulnerabilityNode[] = [
   {
-    nodeId: 'MANUF_001',
-    name: 'Hospira McPherson (FEI-1002381)',
-    facility: 'Primary Sterile Injectable Fill / KS',
-    impactScore: 94.2,
-    pharmaciesAffected: 840,
-    regionalDeficit: '68%',
-    recoveryEst: '52 Days',
-    threatClass: 'CRITICAL (T-1)'
+    nodeId: 'EST-0001',
+    name: 'Hahnemann Laboratories, INC. (EST-0001)',
+    facility: 'Sole-Source Biologic Adalimumab Line',
+    impactScore: 2027.8,
+    pharmaciesAffected: 994,
+    regionalDeficit: '88%',
+    recoveryEst: '120 Days',
+    threatClass: 'CATASTROPHIC (1.7x)'
   },
   {
-    nodeId: 'DIST_001',
-    name: 'McKesson Memphis National Hub',
-    facility: 'Class II/III Primary Redistribution NDC',
-    impactScore: 89.1,
-    pharmaciesAffected: 1200,
-    regionalDeficit: '55%',
-    recoveryEst: '28 Days',
-    threatClass: 'HIGH (T-2)'
+    nodeId: 'DIST-0014',
+    name: 'AmerisourceBergen Northeast DC (DIST-0014)',
+    facility: 'Top Bottleneck DC (Betweenness σ=0.0112)',
+    impactScore: 312.5,
+    pharmaciesAffected: 217,
+    regionalDeficit: '54%',
+    recoveryEst: '45 Days',
+    threatClass: 'SEVERE CHOKE (T-1)'
   },
   {
-    nodeId: 'MANUF_002',
-    name: 'Fresenius Kabi USA (FEI-1414457)',
-    facility: 'Melrose Park Sterile Lyophilization',
-    impactScore: 81.4,
-    pharmaciesAffected: 620,
-    regionalDeficit: '42%',
-    recoveryEst: '35 Days',
-    threatClass: 'HIGH (T-2)'
+    nodeId: 'EST-0050',
+    name: 'NuCare Pharmaceuticals, Inc. (EST-0050)',
+    facility: 'Multi-Source Small Molecule (Bumetanide)',
+    impactScore: 65.0,
+    pharmaciesAffected: 65,
+    regionalDeficit: '18%',
+    recoveryEst: '14 Days',
+    threatClass: 'MODERATE (1.0x)'
   },
   {
-    nodeId: 'MANUF_003',
-    name: 'Hikma Columbus Sterile Facility',
-    facility: 'Aseptic Filling & Oncology Line',
-    impactScore: 78.6,
-    pharmaciesAffected: 540,
-    regionalDeficit: '38%',
-    recoveryEst: '40 Days',
-    threatClass: 'MODERATE (T-3)'
+    nodeId: 'EST-0005',
+    name: 'Aurobindo Pharma Limited (EST-0005)',
+    facility: 'Clonazepam Oral Solid Formulation',
+    impactScore: 198.4,
+    pharmaciesAffected: 168,
+    regionalDeficit: '35%',
+    recoveryEst: '30 Days',
+    threatClass: 'ACTIVE REPLAY'
   }
 ];
 
 export const DisruptionSimulatorPage: React.FC = () => {
-  const [selectedNode, setSelectedNode] = useState('MANUF_001');
-  const [disruptionType, setDisruptionType] = useState('Regulatory cGMP Shutdown');
+  const [selectedNode, setSelectedNode] = useState('EST-0001');
+  const [selectedDrugId, setSelectedDrugId] = useState<string | undefined>('DRUG-0074-0243');
+  const [activePreset, setActivePreset] = useState<string>('SCENARIO_B');
+  const [disruptionType, setDisruptionType] = useState('Regulatory cGMP Shutdown / Warning Letter Suspension');
   const [therapeuticClass, setTherapeuticClass] = useState('Injectable Oncology & Critical Care');
   const [duration, setDuration] = useState(45);
   const [capacityLoss, setCapacityLoss] = useState(85);
   const [isRunning, setIsRunning] = useState(false);
   const [simResult, setSimResult] = useState<any | null>(null);
   const [availableNodes, setAvailableNodes] = useState<Array<{ id: string; label: string; type: string }>>([
-    { id: 'MANUF_001', label: 'Hospira Inc. (FEI-1002381) - McPherson Injection Plant', type: 'Manufacturer' },
-    { id: 'MANUF_003', label: 'Hikma Pharmaceuticals (FEI-3002808) - Columbus Facility', type: 'Manufacturer' },
-    { id: 'MANUF_002', label: 'Fresenius Kabi USA (FEI-1414457) - Melrose Park Sterile Hub', type: 'Manufacturer' },
-    { id: 'DIST_001', label: 'McKesson Memphis National Hub (DIST-001)', type: 'Distributor' }
+    { id: 'EST-0001', label: 'Hahnemann Laboratories, INC. (EST-0001) - Sterile Production', type: 'Manufacturer' },
+    { id: 'DIST-0014', label: 'AmerisourceBergen Northeast DC (DIST-0014) - Distribution DC', type: 'Distributor' },
+    { id: 'EST-0050', label: 'NuCare Pharmaceuticals, Inc. (EST-0050) - Solid Oral Plant', type: 'Manufacturer' },
+    { id: 'EST-0005', label: 'Aurobindo Pharma Limited (EST-0005) - Formulations Plant', type: 'Manufacturer' }
   ]);
 
   useEffect(() => {
@@ -82,24 +84,25 @@ export const DisruptionSimulatorPage: React.FC = () => {
           }));
         if (mapped.length > 0) {
           setAvailableNodes(mapped);
-          setSelectedNode(mapped[0].id);
         }
       }
     });
   }, []);
 
-  const handleRunSimulation = async (e?: React.FormEvent) => {
+  const handleRunSimulation = async (e?: React.FormEvent, overrideNode?: string, overrideDrug?: string) => {
     if (e) e.preventDefault();
+    const nodeToSim = overrideNode || selectedNode;
+    const drugToSim = overrideDrug !== undefined ? overrideDrug : selectedDrugId;
     setIsRunning(true);
     try {
-      const res = await simulateDisruption(selectedNode);
+      const res = await simulateDisruption(nodeToSim, drugToSim);
       if (res) {
         setSimResult(res);
       } else {
         setSimResult({
-          node_id: selectedNode,
-          impact_score: 94.2,
-          pharmacies_affected: 840,
+          node_id: nodeToSim,
+          impact_score: nodeToSim === 'EST-0001' ? 2027.8 : nodeToSim === 'DIST-0014' ? 312.5 : 65.0,
+          pharmacies_affected: nodeToSim === 'EST-0001' ? 994 : nodeToSim === 'DIST-0014' ? 217 : 65,
           disruption_type: disruptionType,
           duration_days: duration,
           capacity_loss: capacityLoss,
@@ -108,8 +111,8 @@ export const DisruptionSimulatorPage: React.FC = () => {
       }
     } catch {
       setSimResult({
-        node_id: selectedNode,
-        impact_score: 89.1,
+        node_id: nodeToSim,
+        impact_score: 94.2,
         pharmacies_affected: 750,
         disruption_type: disruptionType,
         duration_days: duration,
@@ -118,6 +121,32 @@ export const DisruptionSimulatorPage: React.FC = () => {
       });
     } finally {
       setIsRunning(false);
+    }
+  };
+
+  const handleLoadPreset = (presetKey: string) => {
+    setActivePreset(presetKey);
+    if (presetKey === 'SCENARIO_B') {
+      setSelectedNode('EST-0001');
+      setSelectedDrugId('DRUG-0074-0243');
+      setDisruptionType('Regulatory cGMP Shutdown / Warning Letter Suspension');
+      setCapacityLoss(100);
+      setDuration(90);
+      handleRunSimulation(undefined, 'EST-0001', 'DRUG-0074-0243');
+    } else if (presetKey === 'SCENARIO_C') {
+      setSelectedNode('DIST-0014');
+      setSelectedDrugId(undefined);
+      setDisruptionType('Autonomous Industrial Cyberattack / SCADA Outage');
+      setCapacityLoss(80);
+      setDuration(45);
+      handleRunSimulation(undefined, 'DIST-0014', undefined);
+    } else if (presetKey === 'SCENARIO_D') {
+      setSelectedNode('EST-0050');
+      setSelectedDrugId('DRUG-16571-679');
+      setDisruptionType('Sterile Fill-Finish Particulate Contamination Incident');
+      setCapacityLoss(40);
+      setDuration(21);
+      handleRunSimulation(undefined, 'EST-0050', 'DRUG-16571-679');
     }
   };
 
@@ -157,6 +186,55 @@ export const DisruptionSimulatorPage: React.FC = () => {
               <span className="font-mono text-sm font-bold text-blue-600">99.4% (p &lt; 0.001)</span>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Curated Conference Scenarios Quick-Switcher Bar */}
+      <div className="w-full bg-slate-900 rounded-xl p-4 text-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3 border border-slate-800">
+        <div className="flex items-center gap-2.5">
+          <span className="material-symbols-outlined text-amber-400 text-[22px]">play_circle</span>
+          <div>
+            <div className="text-xs font-bold uppercase tracking-wider text-amber-400">Conference Rehearsal Presets (Phase 7.5)</div>
+            <div className="text-xs text-slate-300">Deterministic scenarios pre-validated for live academic and keynote demonstrations</div>
+          </div>
+        </div>
+        <div className="flex items-center gap-2 flex-wrap">
+          <button
+            type="button"
+            onClick={() => handleLoadPreset('SCENARIO_B')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+              activePreset === 'SCENARIO_B'
+                ? 'bg-red-600 text-white shadow-sm ring-2 ring-red-400'
+                : 'bg-slate-800 hover:bg-slate-700 text-slate-200'
+            }`}
+          >
+            <span className="w-2 h-2 rounded-full bg-red-400"></span>
+            <span>Scenario B: Hub with No Backup (EST-0001)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleLoadPreset('SCENARIO_C')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+              activePreset === 'SCENARIO_C'
+                ? 'bg-blue-600 text-white shadow-sm ring-2 ring-blue-400'
+                : 'bg-slate-800 hover:bg-slate-700 text-slate-200'
+            }`}
+          >
+            <span className="w-2 h-2 rounded-full bg-blue-400"></span>
+            <span>Scenario C: Multi-Hop Bottleneck (DIST-0014)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleLoadPreset('SCENARIO_D')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+              activePreset === 'SCENARIO_D'
+                ? 'bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-400'
+                : 'bg-slate-800 hover:bg-slate-700 text-slate-200'
+            }`}
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>Scenario D: Low-Impact Contrast (EST-0050)</span>
+          </button>
         </div>
       </div>
 

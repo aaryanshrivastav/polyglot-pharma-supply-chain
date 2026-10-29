@@ -28,7 +28,7 @@ class TestPolyglotBackendAPI:
     def test_get_live_stock_when_valid_pharmacy_and_drug_should_return_200_and_stock_metadata(self):
         # Arrange
         pharmacy_id = "PHARM-0001"
-        drug_id = "DRUG-0002-7597"
+        drug_id = "DRUG-0093-7679"
 
         # Act
         response = client.get(f"/stock/{pharmacy_id}/{drug_id}")
@@ -40,6 +40,13 @@ class TestPolyglotBackendAPI:
         assert data["drug_id"] == drug_id
         assert "current_stock" in data
         assert "source" in data
+
+    def test_get_live_stock_when_nonexistent_drug_should_return_404_not_found(self):
+        # Arrange & Act
+        response = client.get("/stock/PHARM-0001/NON-EXISTENT-DRUG-99999")
+
+        # Assert
+        assert response.status_code == 404
 
     def test_get_drug_details_when_valid_drug_id_should_return_200_and_monograph(self):
         # Arrange
@@ -66,7 +73,7 @@ class TestPolyglotBackendAPI:
 
     def test_get_drug_trends_when_queried_should_return_200_and_time_series_records(self):
         # Arrange
-        drug_id = "DRUG-0002-7597"
+        drug_id = "DRUG-0093-7679"
         range_days = 15
 
         # Act
@@ -78,6 +85,13 @@ class TestPolyglotBackendAPI:
         assert data["drug_id"] == drug_id
         assert "trends" in data
         assert len(data["trends"]) > 0
+
+    def test_get_drug_trends_when_nonexistent_drug_should_return_404_not_found(self):
+        # Arrange & Act
+        response = client.get("/trends/NON-EXISTENT-DRUG-99999")
+
+        # Assert
+        assert response.status_code == 404
 
     def test_get_spof_rankings_when_top_k_specified_should_return_200_and_ranked_bottlenecks(self):
         # Arrange
@@ -111,6 +125,13 @@ class TestPolyglotBackendAPI:
         assert data["impact_score"] > 0
         assert "affected_pharmacy_count" in data
         assert "severity_classification" in data
+
+    def test_simulate_node_disruption_when_nonexistent_node_should_return_404_not_found(self):
+        # Arrange & Act
+        response = client.post("/simulate/disruption/NON-EXISTENT-NODE-99999")
+
+        # Assert
+        assert response.status_code == 404
 
     def test_get_root_cause_when_incident_reported_should_return_200_and_ranked_candidate_origin(self):
         # Arrange
@@ -184,5 +205,23 @@ class TestPolyglotBackendAPI:
         assert data["edge_count"] > 0
         assert any(n["id"] == "EST-0001" for n in data["nodes"])
         assert any(n["id"] == "EST-0002" for n in data["nodes"])
+
+    def test_get_demo_scenarios_when_queried_should_return_all_curated_scenarios(self):
+        # Act
+        response = client.get("/scenarios")
+
+        # Assert
+        assert response.status_code == 200
+        data = response.json()
+        assert "scenarios" in data
+        scenarios = data["scenarios"]
+        assert "SCENARIO_A" in scenarios
+        assert "SCENARIO_B" in scenarios
+        assert "SCENARIO_C" in scenarios
+        assert "SCENARIO_D" in scenarios
+        assert scenarios["SCENARIO_A"]["target_node_id"] == "EST-0005"
+        assert scenarios["SCENARIO_B"]["expected_drug_criticality"] == 1.7
+        assert scenarios["SCENARIO_D"]["expected_impact_score"] == 65.0
+
 
 

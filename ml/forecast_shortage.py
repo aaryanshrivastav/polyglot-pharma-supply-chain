@@ -115,7 +115,8 @@ class ShortageForecaster:
         # 2. MongoDB
         try:
             from pymongo import MongoClient
-            mongo_uri = os.getenv("MONGO_URI", "mongodb://127.0.0.1:27017/?directConnection=true")
+            default_mongo_uri = "mongodb://root:rootpassword@172.29.80.1:27017/pharma_supply_chain?authSource=admin&directConnection=true"
+            mongo_uri = os.getenv("MONGO_URI", default_mongo_uri)
             self.mongo_client = MongoClient(mongo_uri, serverSelectionTimeoutMS=2000)
             self.mongo_client.admin.command("ping")
             logger.info("Connected to MongoDB for risk score persistence.")
@@ -147,7 +148,7 @@ class ShortageForecaster:
                 cql = "SELECT drug_id, rollup_date, avg_stock FROM daily_rollups;"
                 rows = list(self.cassandra_session.execute(cql))
                 if rows:
-                    df = pd.DataFrame([{"drug_id": r.drug_id, "date": pd.to_datetime(r.rollup_date), "stock": r.avg_stock} for r in rows])
+                    df = pd.DataFrame([{"drug_id": r.drug_id, "date": pd.to_datetime(str(r.rollup_date)), "stock": r.avg_stock} for r in rows])
                     for drug_id, group in df.groupby("drug_id"):
                         if sample_drugs and drug_id not in sample_drugs:
                             continue

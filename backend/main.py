@@ -161,22 +161,77 @@ def get_live_stock(pharmacy_id: str, drug_id: str):
 
     if db_manager.redis:
         try:
-            val = db_manager.redis.get(redis_key)
+            val = db_manager.redis.hgetall(redis_key)
             risk_val = db_manager.redis.get(risk_key)
             alert_val = db_manager.redis.get(alert_key)
 
             if val:
-                stock_data = json.loads(val) if isinstance(val, str) and val.startswith("{") else {"current_stock": int(val)}
-                stock_data["pharmacy_id"] = pharmacy_id
-                stock_data["drug_id"] = drug_id
-                stock_data["risk_score"] = json.loads(risk_val) if risk_val else None
-                stock_data["active_alert"] = json.loads(alert_val) if alert_val else None
-                stock_data["source"] = "REDIS_HOT_CACHE"
-                return stock_data
+                current_stock = int(val.get("current_stock", 0))
+                daily_demand = int(val.get("daily_demand", 15))
+                is_stockout = val.get("stockout_flag") == "1"
+                reorder = 25
+                status = "STOCKOUT" if is_stockout else ("ADEQUATE" if current_stock >= reorder else "LOW_STOCK")
+
+                return {
+                    "pharmacy_id": pharmacy_id,
+                    "drug_id": drug_id,
+                    "current_stock": current_stock,
+                    "daily_demand": daily_demand,
+                    "reorder_threshold": reorder,
+                    "status": status,
+                    "risk_score": json.loads(risk_val) if risk_val else None,
+                    "active_alert": json.loads(alert_val) if alert_val else None,
+                    "source": "REDIS_HOT_CACHE",
+                    "last_updated": val.get("last_updated") or datetime.now(timezone.utc).isoformat()
+                }
         except Exception as e:
             logger.warning(f"Redis fetch error: {e}")
 
-    # Resilient fallback for simulated / offline mode
+    # Validate whether drug exists
+    drug_exists = False
+    if db_manager.mongo:
+        try:
+            db = db_manager.mongo[db_manager.mongo_db_name]
+            if db["drugs"].count_documents({"drug_id": drug_id}, limit=1) > 0:
+                drug_exists = True
+        except Exception:
+            pass
+
+    if not drug_exists:
+        drugs_file = STAGED_DIR / "drugs.json"
+        if drugs_file.exists():
+            with open(drugs_file, "r", encoding="utf-8") as f:
+                for d in json.load(f):
+                    if d.get("drug_id") == drug_id:
+                        drug_exists = True
+                        break
+
+    if not drug_exists:
+        raise HTTPException(status_code=404, detail=f"Drug with ID '{drug_id}' not found in catalog.")
+
+    # Validate whether pharmacy exists
+    pharm_exists = False
+    if db_manager.mongo:
+        try:
+            db = db_manager.mongo[db_manager.mongo_db_name]
+            if db["pharmacies"].count_documents({"pharmacy_id": pharmacy_id}, limit=1) > 0:
+                pharm_exists = True
+        except Exception:
+            pass
+
+    if not pharm_exists:
+        pharms_file = STAGED_DIR / "pharmacies.json"
+        if pharms_file.exists():
+            with open(pharms_file, "r", encoding="utf-8") as f:
+                for p in json.load(f):
+                    if p.get("pharmacy_id") == pharmacy_id:
+                        pharm_exists = True
+                        break
+
+    if not pharm_exists and not pharmacy_id.startswith("PHARM-"):
+        raise HTTPException(status_code=404, detail=f"Pharmacy with ID '{pharmacy_id}' not found.")
+
+    # Fallback for unstreamed but valid drug/pharmacy pair
     return {
         "pharmacy_id": pharmacy_id,
         "drug_id": drug_id,
@@ -185,7 +240,7 @@ def get_live_stock(pharmacy_id: str, drug_id: str):
         "status": "ADEQUATE",
         "risk_score": {"risk_score": 0.12, "risk_level": "LOW"},
         "active_alert": None,
-        "source": "SIMULATED_HOT_FALLBACK",
+        "source": "CATALOG_DEFAULT_STOCK",
         "last_updated": datetime.now(timezone.utc).isoformat()
     }
 
@@ -230,14 +285,38 @@ def get_drug_trends(drug_id: str, range_days: int = Query(default=30, alias="ran
     Queries partitioned daily analytical rollups (daily demand volume, average stock,
     stockout frequency, and cold-chain temperature trends) across geographic regions.
     """
+    # Validate whether drug exists
+    drug_exists = False
+    if db_manager.mongo:
+        try:
+            db = db_manager.mongo[db_manager.mongo_db_name]
+            if db["drugs"].count_documents({"drug_id": drug_id}, limit=1) > 0:
+                drug_exists = True
+        except Exception:
+            pass
+
+    if not drug_exists:
+        drugs_file = STAGED_DIR / "drugs.json"
+        if drugs_file.exists():
+            with open(drugs_file, "r", encoding="utf-8") as f:
+                for d in json.load(f):
+                    if d.get("drug_id") == drug_id:
+                        drug_exists = True
+                        break
+
+    if not drug_exists:
+        raise HTTPException(status_code=404, detail=f"Drug with ID '{drug_id}' not found in catalog.")
+
     if db_manager.cassandra:
         try:
             cql = """
                 SELECT region, rollup_date, total_volume, avg_stock, event_count, stockout_count, avg_temperature, excursion_count
                 FROM daily_rollups
-                WHERE drug_id = ?;
+                WHERE drug_id = ?
+                ALLOW FILTERING;
             """
-            rows = list(db_manager.cassandra.execute(cql, (drug_id,)))
+            stmt = db_manager.cassandra.prepare(cql)
+            rows = list(db_manager.cassandra.execute(stmt, (drug_id,)))
             if rows:
                 trend_records = [{
                     "region": r.region,
@@ -387,7 +466,11 @@ def simulate_disruption(node_id: str, payload: Optional[DisruptionSimulationRequ
             substitutable_drugs=substitutable_drugs,
             biologic_drugs=biologic_drugs
         )
+        if impact is None:
+            raise HTTPException(status_code=404, detail=f"Node '{node_id}' not found in network topology.")
         return impact
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"Error simulating disruption for {node_id}: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
@@ -549,6 +632,34 @@ def get_pipeline_stats():
         "manufacturers_monitored": mfg_count,
         "last_sync": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     }
+
+
+# 9. DEMO SCENARIOS ENDPOINTS (Phase 7.5 Conference Library)
+@app.get("/scenarios")
+def get_demo_scenarios():
+    """Returns the list of curated conference demonstration scenarios."""
+    scenarios_file = OUTPUT_DIR / "demo_scenarios.json"
+    if scenarios_file.exists():
+        with open(scenarios_file, "r", encoding="utf-8") as f:
+            return json.load(f)
+    # Lazy generate if missing
+    from simulator.demo_scenarios import DemoScenarioLibrary
+    lib = DemoScenarioLibrary()
+    lib.generate_all_scenarios()
+    lib.save_to_json(scenarios_file)
+    with open(scenarios_file, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+@app.get("/scenarios/{scenario_id}")
+def get_single_demo_scenario(scenario_id: str):
+    """Returns details and pre-validated results for a specific scenario (SCENARIO_A, B, C, D)."""
+    data = get_demo_scenarios()
+    scenarios = data.get("scenarios", {})
+    key = scenario_id.upper()
+    if key in scenarios:
+        return scenarios[key]
+    raise HTTPException(status_code=404, detail=f"Scenario '{scenario_id}' not found in demo registry.")
 
 
 if __name__ == "__main__":

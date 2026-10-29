@@ -120,20 +120,31 @@ def compute_node_disruption_impact(
 
     # Traverse downstream
     if node_id.startswith("EST-"):  # Manufacturer
+        if mfg_to_dist and node_id not in mfg_to_dist:
+            return None
         dists = mfg_to_dist.get(node_id, [])
         affected_distributors.update(dists)
         for d in dists:
             pharms = dist_to_pharm.get(d, [])
             affected_pharmacies.update(pharms)
     elif node_id.startswith("DIST-"):  # Distributor
+        known_dists = set(dist_to_pharm.keys())
+        for d_list in mfg_to_dist.values():
+            known_dists.update(d_list)
+        if known_dists and node_id not in known_dists:
+            return None
         affected_distributors.add(node_id)
         pharms = dist_to_pharm.get(node_id, [])
         affected_pharmacies.update(pharms)
     elif node_id.startswith("PHARM-"):  # Single Pharmacy
+        known_pharms = set()
+        for p_list in dist_to_pharm.values():
+            known_pharms.update(p_list)
+        if known_pharms and node_id not in known_pharms:
+            return None
         affected_pharmacies.add(node_id)
     else:
-        # Fallback for generic node IDs
-        affected_pharmacies.add(node_id)
+        return None
 
     affected_pharmacy_count = len(affected_pharmacies)
 

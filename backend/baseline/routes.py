@@ -27,7 +27,10 @@ def baseline_get_stock(pharmacy_id: str, drug_id: str):
     Point-lookup query on MongoDB baseline_inventory collection.
     Directly comparable to Redis GET /stock/{pharmacy_id}/{drug_id}.
     """
-    return mongo_baseline_engine.get_stock(pharmacy_id=pharmacy_id, drug_id=drug_id)
+    res = mongo_baseline_engine.get_stock(pharmacy_id=pharmacy_id, drug_id=drug_id)
+    if not res:
+        raise HTTPException(status_code=404, detail=f"Stock record for pharmacy '{pharmacy_id}' and drug '{drug_id}' not found.")
+    return res
 
 
 @router.get("/trends/{drug_id}")
@@ -37,7 +40,10 @@ def baseline_get_trends(drug_id: str, range_days: int = Query(default=30, alias=
     Date-range analytical query over MongoDB baseline_daily_events collection.
     Directly comparable to Cassandra GET /trends/{drug_id}.
     """
-    return mongo_baseline_engine.get_trends(drug_id=drug_id, range_days=range_days)
+    res = mongo_baseline_engine.get_trends(drug_id=drug_id, range_days=range_days)
+    if not res:
+        raise HTTPException(status_code=404, detail=f"Trends for drug '{drug_id}' not found.")
+    return res
 
 
 @router.post("/simulate/disruption/{node_id}")
@@ -48,7 +54,10 @@ def baseline_simulate_disruption(node_id: str, payload: Optional[BaselineDisrupt
     Directly comparable to Neo4j POST /simulate/disruption/{node_id}.
     """
     drug_id = payload.drug_id if payload else None
-    return mongo_baseline_engine.simulate_disruption(node_id=node_id, drug_id=drug_id)
+    res = mongo_baseline_engine.simulate_disruption(node_id=node_id, drug_id=drug_id)
+    if not res:
+        raise HTTPException(status_code=404, detail=f"Node '{node_id}' not found in network.")
+    return res
 
 
 @router.post("/seed")
