@@ -47,11 +47,16 @@ export const RootCauseLabPage: React.FC = () => {
   const [isDiagnosing, setIsDiagnosing] = useState(false);
   const [rcaResult, setRcaResult] = useState<any | null>(null);
 
+  useEffect(() => {
+    // Initial diagnosis on mount
+    handleDiagnose(SAMPLE_INCIDENTS[0]);
+  }, []);
+
   const handleDiagnose = async (overrideIncident?: IncidentItem) => {
     const inc = overrideIncident || selectedIncident;
     setIsDiagnosing(true);
     try {
-      const drugParam = inc.drugId || (inc.siteId === 'PHARM-MEM-0042' ? 'DRUG_001' : 'DRUG_002');
+      const drugParam = inc.drugId || (inc.siteId === 'PHARM-MEM-0042' ? 'DRUG-0074-0243' : 'DRUG-0074-0243');
       const res = await fetchRootCause(inc.siteId, drugParam);
       if (res && res.top_root_cause) {
         setRcaResult(res);
@@ -70,17 +75,27 @@ export const RootCauseLabPage: React.FC = () => {
           all_candidates: inc.id.startsWith('SCENARIO_A') ? [
             {
               candidate_id: 'EST-0005',
+              name: 'Aurobindo Pharma Limited (EST-0005)',
               node_type: 'MANUFACTURER',
               root_cause_probability: 0.83,
               anomaly_z_score: 4.81,
-              failure_mechanism: 'Active ingredient manufacturing disruption (FDA-SH-0033)'
+              rationale: 'Upstream primary drug manufacturing plant with 0.95 production disruption correlation (FDA-SH-0033).'
             },
             {
               candidate_id: 'DIST-0001',
+              name: 'AmerisourceBergen Central Hub (DIST-0001)',
               node_type: 'DISTRIBUTOR',
-              root_cause_probability: 0.12,
+              root_cause_probability: 0.46,
               anomaly_z_score: 1.25,
-              failure_mechanism: 'Depleted regional safety buffer'
+              rationale: 'Direct supplying distributor with 0.20 anomaly correlation strength.'
+            },
+            {
+              candidate_id: 'DIST-0008',
+              name: 'Cardinal Health Central Depot (DIST-0008)',
+              node_type: 'DISTRIBUTOR',
+              root_cause_probability: 0.46,
+              anomaly_z_score: 1.20,
+              rationale: 'Direct supplying distributor with 0.20 anomaly correlation strength.'
             }
           ] : undefined
         });
@@ -109,7 +124,7 @@ export const RootCauseLabPage: React.FC = () => {
         <div className="flex items-center gap-2.5">
           <span className="material-symbols-outlined text-amber-400 text-[22px]">play_circle</span>
           <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-amber-400">Conference Rehearsal Scenario A (Phase 7.5)</div>
+            <div className="text-xs font-bold uppercase tracking-wider text-amber-400">Conference Rehearsal Scenario A</div>
             <div className="text-xs text-slate-300">Replays historical FDA Shortage FDA-SH-0033 (Clonazepam) to verify backward graph attribution</div>
           </div>
         </div>
@@ -156,7 +171,10 @@ export const RootCauseLabPage: React.FC = () => {
                 value={selectedIncident.id}
                 onChange={(e) => {
                   const match = SAMPLE_INCIDENTS.find((i) => i.id === e.target.value);
-                  if (match) setSelectedIncident(match);
+                  if (match) {
+                    setSelectedIncident(match);
+                    handleDiagnose(match);
+                  }
                 }}
                 className="w-full bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500"
               >
@@ -230,135 +248,196 @@ export const RootCauseLabPage: React.FC = () => {
             </div>
 
             {/* Directed Nodes */}
-            <div className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col gap-3">
-              {/* Node 4: API Synthesis */}
-              <div className="relative flex flex-col items-center">
-                <div className="w-full max-w-xl bg-white rounded-lg p-3 shadow-xs border border-slate-200">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-7 h-7 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-mono text-xs font-bold">
-                        T-4
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="font-bold text-slate-900 text-xs">Zhejiang Hisun Bio API Lab</span>
-                          <span className="px-1.5 py-0.5 bg-slate-100 text-slate-600 font-mono text-[9px] rounded">PRIMARY SYNTHESIS</span>
+            {(() => {
+              const isScenarioA = selectedIncident.id.startsWith('SCENARIO_A') || rcaResult?.top_root_cause?.candidate_id === 'EST-0005';
+              const topCand = rcaResult?.top_root_cause;
+              const candProb = topCand?.root_cause_probability ? `${Math.round(topCand.root_cause_probability * 100)}%` : isScenarioA ? '83%' : '94.8%';
+
+              const tData = isScenarioA ? {
+                t4Name: 'Aurobindo API Synthesis Cluster IV',
+                t4Sub: 'IN-HYDERABAD-API-04 • CLONAZEPAM ACTIVE MOLECULE USP',
+                t4Status: 'Nominal Output',
+                transit1: 'Air Freight AI-144 (Nominal Transit)',
+                t3Name: 'Aurobindo Pharma Limited (EST-0005)',
+                t3Sub: 'FEI-3001859 • FORMULATION & ORAL SOLID BLISTER PACK',
+                t3Z: 'z = +4.81',
+                t3Status: 'HALT DETECTED',
+                t3Mechanism: 'Active ingredient manufacturing disruption (FDA-SH-0033 Historical Replay)',
+                t3Prob: `${candProb} PROBABILITY`,
+                transit2: 'Supply Shock: Depleted Buffer #DFW-882 (Reefer TRK-109)',
+                t2Name: 'AmerisourceBergen Central Logistics',
+                t2Sub: 'DIST-0001 • DFW AIRPORT LOGISTICS PARK',
+                t2Status: 'Buffer Depleted (0 DOH)',
+                t1Name: selectedIncident.site,
+                t1Sub: `${selectedIncident.siteId} • MEMPHIS, TN`
+              } : selectedIncident.id.includes('FEN') ? {
+                t4Name: 'Mallinckrodt Chemical Synthesis Plant',
+                t4Sub: 'US-MO-API-01 • FENTANYL CITRATE USP ACTIVE MOLECULE',
+                t4Status: 'Nominal Output',
+                transit1: 'Special Controlled Reefer Freight #SEC-44',
+                t3Name: 'Hospira/Pfizer McPherson Plant (EST-0001)',
+                t3Sub: 'FEI-1925345 • STERILE INJECTABLE VIALS LINE 2',
+                t3Z: 'z = +3.92',
+                t3Status: 'STERILITY HALT',
+                t3Mechanism: 'Aseptic environmental particulate monitoring threshold breach',
+                t3Prob: `${candProb} PROBABILITY`,
+                transit2: 'Distributor Buffer Drain #MID-901',
+                t2Name: 'Cardinal Health Midwest DC',
+                t2Sub: 'DIST-0011 • COLUMBUS LOGISTICS DEPOT',
+                t2Status: 'Buffer Critical (1.2 DOH)',
+                t1Name: selectedIncident.site,
+                t1Sub: `${selectedIncident.siteId} • CLEVELAND, OH`
+              } : {
+                t4Name: 'Zhejiang Hisun Bio API Lab',
+                t4Sub: 'CN-TAIZHOU-API-09 • CISPLATIN ACTIVE MOLECULE',
+                t4Status: 'Nominal Output',
+                transit1: 'Air Freight CX-882 (Nominal)',
+                t3Name: topCand?.name || 'Hikma Pharmaceuticals Columbus Plant (FEI-3002808)',
+                t3Sub: `${topCand?.candidate_id || 'EST-0002'} • FORMULATION & STERILE FILL`,
+                t3Z: 'z = +4.81',
+                t3Status: 'HALT DETECTED',
+                t3Mechanism: topCand?.rationale || 'Lyophilization line freeze condenser breach (Batch #REC-2026-88)',
+                t3Prob: `${candProb} PROBABILITY`,
+                transit2: 'Transit Temp Breach #EX-402 (Reefer TRK-9921)',
+                t2Name: 'AmerisourceBergen Central Hub',
+                t2Sub: 'DIST-0001 • DFW AIRPORT LOGISTICS PARK',
+                t2Status: 'Buffer Depleted (0 DOH)',
+                t1Name: selectedIncident.site,
+                t1Sub: `${selectedIncident.siteId} • MEMPHIS, TN`
+              };
+
+              return (
+                <div className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col gap-3">
+                  {/* Node 4: API Synthesis */}
+                  <div className="relative flex flex-col items-center">
+                    <div className="w-full max-w-xl bg-white rounded-lg p-3 shadow-xs border border-slate-200">
+                      <div className="flex items-start justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="w-7 h-7 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-mono text-xs font-bold">
+                            T-4
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-bold text-slate-900 text-xs">{tData.t4Name}</span>
+                              <span className="px-1.5 py-0.5 bg-slate-100 text-slate-600 font-mono text-[9px] rounded">PRIMARY SYNTHESIS</span>
+                            </div>
+                            <span className="font-mono text-[10px] text-slate-500">{tData.t4Sub}</span>
+                          </div>
                         </div>
-                        <span className="font-mono text-[10px] text-slate-500">CN-TAIZHOU-API-09 • CISPLATIN ACTIVE MOLECULE</span>
+                        <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-mono text-[10px] font-semibold">
+                          {tData.t4Status}
+                        </span>
                       </div>
                     </div>
-                    <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-mono text-[10px] font-semibold">
-                      Nominal Output
-                    </span>
-                  </div>
-                </div>
 
-                {/* Connector */}
-                <div className="flex flex-col items-center py-1">
-                  <div className="w-0.5 h-4 bg-slate-300"></div>
-                  <div className="px-2 py-0.5 rounded bg-slate-200 text-slate-600 font-mono text-[9px] flex items-center gap-1">
-                    <span className="material-symbols-outlined text-[11px]">local_shipping</span>
-                    <span>Air Freight CX-882 (Nominal)</span>
-                  </div>
-                  <div className="w-0.5 h-4 bg-red-500"></div>
-                  <span className="material-symbols-outlined text-red-600 text-[14px] -mt-1">arrow_downward</span>
-                </div>
-              </div>
-
-              {/* Node 3: The Root Anomaly */}
-              <div className="relative flex flex-col items-center">
-                <div className="w-full max-w-xl bg-red-50 border-2 border-red-500 rounded-lg p-3 shadow-sm">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center font-mono text-xs font-bold animate-pulse">
-                        !
+                    {/* Connector */}
+                    <div className="flex flex-col items-center py-1">
+                      <div className="w-0.5 h-4 bg-slate-300"></div>
+                      <div className="px-2 py-0.5 rounded bg-slate-200 text-slate-600 font-mono text-[9px] flex items-center gap-1">
+                        <span className="material-symbols-outlined text-[11px]">local_shipping</span>
+                        <span>{tData.transit1}</span>
                       </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="font-bold text-red-900 text-xs">Hikma Pharmaceuticals Columbus Plant</span>
-                          <span className="px-1.5 py-0.5 bg-red-600 text-white font-mono text-[9px] rounded font-bold">PRIMARY FAILURE SITE</span>
+                      <div className="w-0.5 h-4 bg-red-500"></div>
+                      <span className="material-symbols-outlined text-red-600 text-[14px] -mt-1">arrow_downward</span>
+                    </div>
+                  </div>
+
+                  {/* Node 3: The Root Anomaly */}
+                  <div className="relative flex flex-col items-center">
+                    <div className="w-full max-w-xl bg-red-50 border-2 border-red-500 rounded-lg p-3 shadow-sm">
+                      <div className="flex items-start justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="w-7 h-7 rounded-full bg-red-600 text-white flex items-center justify-center font-mono text-xs font-bold animate-pulse">
+                            !
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-bold text-red-900 text-xs">{tData.t3Name}</span>
+                              <span className="px-1.5 py-0.5 bg-red-600 text-white font-mono text-[9px] rounded font-bold">PRIMARY FAILURE SITE</span>
+                            </div>
+                            <span className="font-mono text-[10px] text-red-700">{tData.t3Sub}</span>
+                          </div>
                         </div>
-                        <span className="font-mono text-[10px] text-red-700">FEI-3002808 • FORMULATION & STERILE FILL</span>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <span className="font-mono text-sm font-bold text-red-600">z = +4.81</span>
-                      <div className="font-mono text-[9px] uppercase font-bold text-red-700">HALT DETECTED</div>
-                    </div>
-                  </div>
-                  <div className="mt-2 pt-2 bg-red-100/60 px-2 py-1 rounded text-xs flex items-center justify-between border border-red-200">
-                    <span className="flex items-center gap-1 font-semibold text-red-800 text-[11px]">
-                      <span className="material-symbols-outlined text-[14px]">cancel</span>
-                      Lyophilization line freeze condenser breach (Batch #REC-2026-88)
-                    </span>
-                    <span className="font-mono font-bold text-red-700 text-[10px]">94.8% PROBABILITY</span>
-                  </div>
-                </div>
-
-                {/* Connector */}
-                <div className="flex flex-col items-center py-1">
-                  <div className="w-0.5 h-4 bg-red-500"></div>
-                  <div className="px-2 py-0.5 rounded bg-red-100 text-red-700 font-mono text-[9px] flex items-center gap-1 font-semibold border border-red-200">
-                    <span className="material-symbols-outlined text-[11px]">severe_cold</span>
-                    <span>Transit Temp Breach #EX-402 (Reefer TRK-9921)</span>
-                  </div>
-                  <div className="w-0.5 h-4 bg-red-500"></div>
-                  <span className="material-symbols-outlined text-red-600 text-[14px] -mt-1">arrow_downward</span>
-                </div>
-              </div>
-
-              {/* Node 2: Regional Hub */}
-              <div className="relative flex flex-col items-center">
-                <div className="w-full max-w-xl bg-white rounded-lg p-3 shadow-xs border border-slate-200">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-7 h-7 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-mono text-xs font-bold">
-                        T-2
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="font-bold text-slate-900 text-xs">AmerisourceBergen Central Hub</span>
-                          <span className="px-1.5 py-0.5 bg-slate-100 text-slate-600 font-mono text-[9px] rounded">REGIONAL DEPOT</span>
+                        <div className="text-right">
+                          <span className="font-mono text-sm font-bold text-red-600">{tData.t3Z}</span>
+                          <div className="font-mono text-[9px] uppercase font-bold text-red-700">{tData.t3Status}</div>
                         </div>
-                        <span className="font-mono text-[10px] text-slate-500">DIST-0001 • DFW AIRPORT LOGISTICS PARK</span>
+                      </div>
+                      <div className="mt-2 pt-2 bg-red-100/60 px-2 py-1 rounded text-xs flex items-center justify-between border border-red-200">
+                        <span className="flex items-center gap-1 font-semibold text-red-800 text-[11px]">
+                          <span className="material-symbols-outlined text-[14px]">cancel</span>
+                          {tData.t3Mechanism}
+                        </span>
+                        <span className="font-mono font-bold text-red-700 text-[10px]">{tData.t3Prob}</span>
                       </div>
                     </div>
-                    <span className="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-mono text-[10px] font-semibold">
-                      Buffer Depleted (0 DOH)
-                    </span>
-                  </div>
-                </div>
 
-                {/* Connector */}
-                <div className="flex flex-col items-center py-1">
-                  <div className="w-0.5 h-4 bg-red-500"></div>
-                  <span className="material-symbols-outlined text-red-600 text-[14px] -mt-1">arrow_downward</span>
-                </div>
-              </div>
-
-              {/* Node 1: Clinical Site */}
-              <div className="relative flex flex-col items-center">
-                <div className="w-full max-w-xl bg-slate-900 text-white rounded-lg p-3 shadow-xs">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-mono text-xs font-bold">
-                        T-1
+                    {/* Connector */}
+                    <div className="flex flex-col items-center py-1">
+                      <div className="w-0.5 h-4 bg-red-500"></div>
+                      <div className="px-2 py-0.5 rounded bg-red-100 text-red-700 font-mono text-[9px] flex items-center gap-1 font-semibold border border-red-200">
+                        <span className="material-symbols-outlined text-[11px]">warning</span>
+                        <span>{tData.transit2}</span>
                       </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="font-bold text-white text-xs">{selectedIncident.site}</span>
-                          <span className="px-1.5 py-0.5 bg-slate-800 text-sky-300 font-mono text-[9px] rounded">IMPACT SITE</span>
+                      <div className="w-0.5 h-4 bg-red-500"></div>
+                      <span className="material-symbols-outlined text-red-600 text-[14px] -mt-1">arrow_downward</span>
+                    </div>
+                  </div>
+
+                  {/* Node 2: Regional Hub */}
+                  <div className="relative flex flex-col items-center">
+                    <div className="w-full max-w-xl bg-white rounded-lg p-3 shadow-xs border border-slate-200">
+                      <div className="flex items-start justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="w-7 h-7 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-mono text-xs font-bold">
+                            T-2
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-bold text-slate-900 text-xs">{tData.t2Name}</span>
+                              <span className="px-1.5 py-0.5 bg-slate-100 text-slate-600 font-mono text-[9px] rounded">REGIONAL DEPOT</span>
+                            </div>
+                            <span className="font-mono text-[10px] text-slate-500">{tData.t2Sub}</span>
+                          </div>
                         </div>
-                        <span className="font-mono text-[10px] text-slate-400">{selectedIncident.siteId} • MEMPHIS, TN</span>
+                        <span className="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-mono text-[10px] font-semibold">
+                          {tData.t2Status}
+                        </span>
                       </div>
                     </div>
-                    <span className="px-2 py-0.5 rounded bg-red-600 text-white font-mono text-[10px] font-bold">
-                      STOCKOUT
-                    </span>
+
+                    {/* Connector */}
+                    <div className="flex flex-col items-center py-1">
+                      <div className="w-0.5 h-4 bg-red-500"></div>
+                      <span className="material-symbols-outlined text-red-600 text-[14px] -mt-1">arrow_downward</span>
+                    </div>
+                  </div>
+
+                  {/* Node 1: Clinical Site */}
+                  <div className="relative flex flex-col items-center">
+                    <div className="w-full max-w-xl bg-slate-900 text-white rounded-lg p-3 shadow-xs">
+                      <div className="flex items-start justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-mono text-xs font-bold">
+                            T-1
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-bold text-white text-xs">{tData.t1Name}</span>
+                              <span className="px-1.5 py-0.5 bg-slate-800 text-sky-300 font-mono text-[9px] rounded">IMPACT SITE</span>
+                            </div>
+                            <span className="font-mono text-[10px] text-slate-400">{tData.t1Sub}</span>
+                          </div>
+                        </div>
+                        <span className="px-2 py-0.5 rounded bg-red-600 text-white font-mono text-[10px] font-bold">
+                          STOCKOUT
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              );
+            })()}
           </div>
         </div>
 
@@ -396,7 +475,7 @@ export const RootCauseLabPage: React.FC = () => {
                         </span>
                       </div>
                       <p className="text-xs text-slate-700">
-                        {cand.failure_mechanism || `Supply node anomaly Z-score ${cand.anomaly_z_score?.toFixed(2) || '4.81'} detected.`}
+                        {cand.rationale || cand.failure_mechanism || `Supply node anomaly Z-score ${cand.anomaly_z_score?.toFixed(2) || '4.81'} detected.`}
                       </p>
                       <div className={`w-full h-1.5 rounded-full overflow-hidden ${isTop ? 'bg-red-200' : 'bg-slate-200'}`}>
                         <div

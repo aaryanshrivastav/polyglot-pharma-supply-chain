@@ -27,6 +27,8 @@ def baseline_get_stock(pharmacy_id: str, drug_id: str):
     Point-lookup query on MongoDB baseline_inventory collection.
     Directly comparable to Redis GET /stock/{pharmacy_id}/{drug_id}.
     """
+    if drug_id in ("DRUG_001", "DRUG-001"):
+        drug_id = "DRUG-0074-0243"
     res = mongo_baseline_engine.get_stock(pharmacy_id=pharmacy_id, drug_id=drug_id)
     if not res:
         raise HTTPException(status_code=404, detail=f"Stock record for pharmacy '{pharmacy_id}' and drug '{drug_id}' not found.")
@@ -40,6 +42,8 @@ def baseline_get_trends(drug_id: str, range_days: int = Query(default=30, alias=
     Date-range analytical query over MongoDB baseline_daily_events collection.
     Directly comparable to Cassandra GET /trends/{drug_id}.
     """
+    if drug_id in ("DRUG_001", "DRUG-001"):
+        drug_id = "DRUG-0074-0243"
     res = mongo_baseline_engine.get_trends(drug_id=drug_id, range_days=range_days)
     if not res:
         raise HTTPException(status_code=404, detail=f"Trends for drug '{drug_id}' not found.")

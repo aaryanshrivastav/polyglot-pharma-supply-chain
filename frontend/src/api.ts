@@ -79,12 +79,36 @@ export async function fetchDrugTrends(drugId: string, range: number = 30) {
   }
 }
 
-export async function simulateDisruption(nodeId: string, drugId?: string) {
+export interface DisruptionSimulationOptions {
+  drugId?: string;
+  duration?: number;
+  capacityLoss?: number;
+  disruptionType?: string;
+  therapeuticClass?: string;
+}
+
+export async function simulateDisruption(
+  nodeId: string,
+  opts?: string | DisruptionSimulationOptions
+) {
   try {
+    let bodyPayload: Record<string, any> = { time_window_days: 30 };
+    if (typeof opts === 'string') {
+      bodyPayload.drug_id = opts;
+    } else if (opts) {
+      bodyPayload = {
+        drug_id: opts.drugId,
+        time_window_days: opts.duration || 30,
+        duration_days: opts.duration || 45,
+        capacity_loss_pct: opts.capacityLoss !== undefined ? opts.capacityLoss : 100,
+        disruption_type: opts.disruptionType,
+        therapeutic_class: opts.therapeuticClass
+      };
+    }
     const res = await fetch(`${API_BASE}/simulate/disruption/${nodeId}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ drug_id: drugId, time_window_days: 30 })
+      body: JSON.stringify(bodyPayload)
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.json();
@@ -145,7 +169,7 @@ export function subscribeEventsStream(
   }
 }
 
-export async function runLiveBenchmarkSample(drugId: string = 'DRUG_001'): Promise<{
+export async function runLiveBenchmarkSample(drugId: string = 'DRUG-0074-0243'): Promise<{
   polyglotDurationMs: number;
   baselineDurationMs: number;
   speedup: number;

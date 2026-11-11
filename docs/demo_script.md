@@ -15,7 +15,7 @@ Before beginning your live demo, ensure the backend services and frontend interf
    ```powershell
    uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
    ```
-   *Verify health check:* `curl http://127.0.0.1:8000/api/health` should return `{"status": "HEALTHY"}`.
+   *Verify health check:* `curl http://127.0.0.1:8000/health` (or `http://127.0.0.1:8000/api/health`) should return `{"status": "HEALTHY"}`.
 2. **Vite React Frontend (Port 5173)**:
    ```powershell
    cd frontend

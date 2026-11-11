@@ -95,7 +95,7 @@ export const IoTTelemetryPage: React.FC = () => {
 
   // Pull live Cassandra time-series trends on mount
   useEffect(() => {
-    fetchDrugTrends('DRUG_001', 30).then((data) => {
+    fetchDrugTrends('DRUG-0074-0243', 30).then((data) => {
       if (data && data.trends && data.trends.length > 0) {
         const latest = data.trends[0];
         setCassandraMetrics({
